@@ -1,0 +1,14 @@
+@import 'src/styles/pallete';
+
+:host{
+    position: absolute;
+    inset:0;
+    background-color: $secondary-color;
+}
+
+.navigation{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}

@@ -1,0 +1,83 @@
+@import "src/styles/pallete";
+@import "src/styles/variables";
+
+:host{
+position:fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $dark-color;
+  z-index: 1;
+}
+
+mat-toolbar {
+  height: $header-height;
+  max-width: 1400px;
+  margin: 0 auto;
+  color: $white;
+  background-color: transparent;
+  list-style: none;
+}
+
+
+
+.logo-subtitle {
+  margin-left: 8px;
+}
+
+img {
+  height: 40px;
+}
+
+ul {
+  display: none;
+}
+
+ul li {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 17px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.burger-button,
+ul {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+
+.bottom-line{
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba($color: $primary-color, $alpha: .5);
+}
+
+.header-item{
+  z-index: 1;
+}
+
+app-sidenav{
+ 
+  height: 100vh;
+}
+
+
+
+//media #############################################################
+@media (min-width: 768px) {
+  .burger-button {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+  }
+}
+
+

@@ -1,0 +1,16 @@
+@import '/src/styles/pallete.scss';
+@import "src/styles/variables";
+
+:host{
+  background-color: $dark-color;
+  min-height: 110vh;
+  padding: $header-height 35px;
+}
+
+h1{
+  font-size: 60px;
+  background: linear-gradient(339deg, rgba(8,217,214,1) 0%, rgba(255,250,251,1) 53%,rgba(255,46,99,1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

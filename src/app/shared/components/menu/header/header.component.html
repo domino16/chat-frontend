@@ -1,0 +1,16 @@
+<!-- <div class="toolbar-wrapper" [ngClass]="{'scrolled': isScrolled }" (window:scroll)="onScroll()" > -->
+  <app-sidenav *ngIf="isMenuActive"></app-sidenav>
+  <mat-toolbar (window:scroll)="onScroll()">
+    <img class="header-item" src="/assets/logo-gef167d036_640.png" alt="logo" />
+    <span class="logo-subtitle header-item">SendM</span>
+    <button mat-icon-button class="burger-button header-item" (click)="isMenuActive = !isMenuActive">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <ul class="navigation-right">
+      <li>About me</li>
+      <li>Sign Up</li>
+      <li>Contact</li>
+    </ul>
+    <div [ngClass]="{'bottom-line': isScrolled && !isMenuActive}"></div>
+  </mat-toolbar>
+ 
