@@ -1,4 +1,4 @@
-@import "src/styles/pallete";
+@import "src/styles/colors";
 @import "src/styles/variables";
 
 :host{
@@ -6,7 +6,7 @@ position:fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: $dark-color;
+  background: linear-gradient(0deg, rgba($dark-color, $alpha: 0.9) 0%, rgba($dark-color, $alpha: 0.995) 33%);;
   z-index: 1;
 }
 
@@ -20,7 +20,6 @@ mat-toolbar {
 }
 
 
-
 .logo-subtitle {
   margin-left: 8px;
 }
@@ -29,9 +28,6 @@ img {
   height: 40px;
 }
 
-ul {
-  display: none;
-}
 
 ul li {
   display: inline-block;
@@ -47,7 +43,6 @@ ul {
   margin-left: auto;
   margin-right: 0;
 }
-
 
 .bottom-line{
     position: absolute;
@@ -65,19 +60,6 @@ ul {
 app-sidenav{
  
   height: 100vh;
-}
-
-
-
-//media #############################################################
-@media (min-width: 768px) {
-  .burger-button {
-    display: none;
-  }
-
-  ul {
-    display: flex;
-  }
 }
 
 

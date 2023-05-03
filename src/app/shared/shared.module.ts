@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/menu/header/header.component';
 import { SidenavComponent } from './components/menu/sidenav/sidenav.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [HeaderComponent, SidenavComponent, FooterComponent],
@@ -14,6 +15,8 @@ import { SidenavComponent } from './components/menu/sidenav/sidenav.component';
     FlexLayoutModule,
     MaterialModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
+    FontAwesomeModule,
   ],
   exports: [
     HeaderComponent,
@@ -23,6 +26,8 @@ import { SidenavComponent } from './components/menu/sidenav/sidenav.component';
     FlexLayoutModule,
     MaterialModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
+    FontAwesomeModule,
   ],
 })
 export class SharedModule {}

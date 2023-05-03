@@ -1,4 +1,4 @@
-@import 'src/styles/pallete';
+@import 'src/styles/colors';
 
 :host{
     position: absolute;
@@ -7,8 +7,5 @@
 }
 
 .navigation{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
+ height: 100%;
 }
