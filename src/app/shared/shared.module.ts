@@ -7,6 +7,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/menu/header/header.component';
 import { SidenavComponent } from './components/menu/sidenav/sidenav.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [HeaderComponent, SidenavComponent, FooterComponent],
@@ -17,6 +19,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserAnimationsModule,
     FlexLayoutModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
   ],
   exports: [
     HeaderComponent,
@@ -28,6 +32,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserAnimationsModule,
     FlexLayoutModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
 })
 export class SharedModule {}

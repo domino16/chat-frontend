@@ -4,7 +4,6 @@
 
 :host {
   min-height: 100vh;
-
   background-color: $dark-color;
 }
 
@@ -12,59 +11,49 @@
   margin: 0 auto;
   padding: $header-height 35px 100px 35px;
   max-width: 500px;
- 
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 5rem;
   font-weight: 600;
-  letter-spacing: 5px;
+  letter-spacing: 0.5rem;
   background: $home-h1-gradient;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin: 40px 0;
+  margin: 0.5em 0;
 }
 
-h3{
-  color: rgba($color: $white, $alpha: .8);
-  font-size: 1.2rem;
+h3 {
+  color: rgba($color: $white, $alpha: 0.8);
+  font-size: 2rem;
   font-weight: 500;
   letter-spacing: 1px;
-  margin-bottom: 40px;
- 
+  margin-bottom: 2em;
 }
 
 .home-side--right img {
   width: 300px;
 }
 
-//#form styles
-input {
-  color:  $white !important;
-}
-
 p {
-  font-size: .9rem;
+  font-size: 1.5rem;
   color: $primary-color;
   text-decoration: underline;
   margin-left: 1.5em;
   cursor: pointer;
 }
 
-.keep-signin-checkbox {
-  margin-top: 45px;
-}
-
 //checkbox styles
-.checkbox-wrapper{
-margin: 20px 0px;
-color: white;
-}
-.checkbox-wrapper span{
-  margin: 0px 10px;
+.checkbox-wrapper {
+  margin: 2em 0;
   color: white;
-  }
+}
+.checkbox-wrapper span {
+  margin: 0px 6px;
+  color: white;
+  font-size: 1.6rem;
+}
 
 .checkbox-wrapper input[type="checkbox"] {
   display: none;
@@ -79,8 +68,8 @@ color: white;
   cursor: pointer;
   position: relative;
   margin: auto;
-  width: 180px;
-  height: 18px;
+  width: 18em;
+  height: 1.8em;
   -webkit-tap-highlight-color: transparent;
   transform: translate3d(0, 0, 0);
 }
@@ -92,7 +81,7 @@ color: white;
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(34,50,84,0.03);
+  background: rgba(34, 50, 84, 0.03);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -135,7 +124,10 @@ color: white;
   transition-delay: 0.15s;
 }
 
-
+//#form styles
+input {
+  color: $white !important;
+}
 
 // styles for untouched input
 ::ng-deep .mdc-text-field .mdc-floating-label {
@@ -143,7 +135,7 @@ color: white;
 }
 
 ::ng-deep .mdc-notched-outline > * {
-  border-color:  $white !important;
+  border-color: $white !important;
 }
 
 // styles for untouched input
@@ -168,24 +160,23 @@ $matWarnPallete: mat.define-palette(mat.$red-palette);
 }
 
 @media (min-width: 600px) {
-  h1, h3{
+  h1,
+  h3 {
     text-align: center;
   }
-
 }
 
 @media (min-width: 960px) {
-  .home-wrapper{
-   max-width: 1400px;
+  .home-wrapper {
+    max-width: 1400px;
   }
 
-  h1{
-    font-size: 70px;
+  h1 {
+    font-size: 7em;
     text-align: start;
-
   }
 
-  h3{
+  h3 {
     text-align: start;
   }
 

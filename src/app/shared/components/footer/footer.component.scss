@@ -5,7 +5,7 @@
   max-width: 1400px;
   height: 40px;
   margin: 0 auto;
-  padding: 40px 30px;
+  padding: 40px 30px 30px 30px;
   color: $white;
   border-top: 1px solid rgba($color: $primary-color, $alpha: .5);
   
@@ -13,11 +13,11 @@
 
 
 .my-name{
-  font-size: 1.1em;
+  font-size: 1.6rem;
 }
 
 fa-icon{
-  font-size: 2.3em;
+  font-size: 3rem;
   cursor: pointer;
   &:hover {
           animation: icon3d 200ms infinite;

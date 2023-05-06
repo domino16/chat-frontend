@@ -1,39 +1,45 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 @include mat.core();
 
-@import 'src/styles/variables';
-@import 'src/styles/pallete';
+@import "src/styles/variables";
+@import "src/styles/pallete";
+@import "src/styles/colors";
 
 //####### custom pallete for mat-form-field elements
 $my-primary: mat.define-palette($custom-primary, 500);
 $my-accent: mat.define-palette($custom-primary, 300);
 $my-warn: mat.define-palette(mat.$red-palette);
 
-
-$my-theme: mat.define-light-theme((
- color: (
-   primary: $my-primary,
-   accent: $my-accent,
-   warn: $my-warn,
- ),
- density: -3,
-));
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $my-accent,
+      warn: $my-warn,
+    ),
+    density: -3,
+  )
+);
 
 // @include mat.form-field-theme($my-theme);
 @include mat.all-component-themes($my-theme);
 /* You can add global styles to this file, and also import other style files */
-
-body {
+html {
+  font-size: 62.5%;
+  font-family: $font-family;
   margin: 0;
   padding: 0;
-  font-family: $font-family;
+}
 
+body {
+  background-color: $dark-color;
 }
 
 app-root {
-  
+  max-width: 1400px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  color: $white;
 }
-
