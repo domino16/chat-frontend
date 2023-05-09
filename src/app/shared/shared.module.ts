@@ -9,7 +9,6 @@ import { SidenavComponent } from './components/menu/sidenav/sidenav.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
-
 @NgModule({
   declarations: [HeaderComponent, SidenavComponent, FooterComponent],
   imports: [

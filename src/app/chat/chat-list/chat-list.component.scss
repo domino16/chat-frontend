@@ -1,9 +1,62 @@
 @import "src/styles/colors";
 
-:host{
-    display: inline-block;
-    max-width: 500px;
-    width: 100%;
+:host {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+//------------header styles----------------------------------------------------
+.chat-list-header {
+  padding: 15px 0 8px;
+  height: 100px;
+
+
+
+  img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  p {
+    font-size: 2rem;
+    margin-left: 10px;
+  }
+}
+  .divider-line {
+    border-bottom: 1px solid rgba($color: $primary-color, $alpha: 0.4);
+  }
+mat-form-field {
+  margin-top: 10px;
+  width: 100%;
+
+  input {
+    color: $white !important;
+  }
+
+  // styles for untouched input
+  ::ng-deep .mdc-text-field .mdc-floating-label {
+    color: $white !important;
+  }
+
+  ::ng-deep .mdc-notched-outline > * {
+    border-color: $white !important;
+  }
+
+  // styles for untouched input
+  ::ng-deep .mdc-text-field--focused .mdc-notched-outline > * {
+    border-color: $primary-color !important;
+  }
+  ::ng-deep .mdc-text-field--focused .mdc-floating-label > * {
+    color: $primary-color !important;
+  }
+}
+//------------chat list styles----------------------------------------------------
+.chat-list-wrapper {
+  overflow-y: scroll;
 }
 
 input[type="radio"] {
@@ -22,7 +75,6 @@ input[type="radio"] {
   border-top: 1px solid $dark-color-lighter;
   font-size: 1.6rem;
 
-
   &__left {
     img {
       width: 50px;
@@ -40,7 +92,7 @@ input[type="radio"] {
 
     span {
       margin: 2px 0px;
-      color:$grey-color ;
+      color: $gray-color;
       font-size: 1.4rem;
     }
   }
@@ -48,25 +100,18 @@ input[type="radio"] {
   &__right {
     font-size: 1.4rem;
 
-    .last-message-date{
-        color: $grey-color;
+    .last-message-date {
+      color: $gray-color;
     }
 
-    .last-message-notification{
-        min-width: 15px;
-        min-height: 10px;
-        padding: 10%;
-        border-radius: 50%;
-        background-color: $primary-color;
-        text-align: center;
-        margin: 8px 0;
-
+    .last-message-notification {
+      min-width: 15px;
+      min-height: 10px;
+      padding: 10%;
+      border-radius: 50%;
+      background-color: $primary-color;
+      text-align: center;
+      margin: 8px 0;
     }
-
   }
-}
-
-.story-box{
-    height: 120px;
-    border: 1px solid orchid;
 }

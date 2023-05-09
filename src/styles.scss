@@ -24,15 +24,36 @@ $my-theme: mat.define-light-theme(
 // @include mat.form-field-theme($my-theme);
 @include mat.all-component-themes($my-theme);
 /* You can add global styles to this file, and also import other style files */
+*{
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $gray-color;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: $gray-color;
+  }
+}
+
 html {
   font-size: 62.5%;
   font-family: $font-family;
-  margin: 0;
-  padding: 0;
 }
 
 body {
   background-color: $dark-color;
+  margin: 0;
+  padding: 0;
+  
 }
 
 app-root {
