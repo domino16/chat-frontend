@@ -4,6 +4,7 @@ import { ChatComponent } from './chat.component';
 import { ChatListComponent } from './chat-list/chat-list.component';
 import { ChatMessengerComponent } from './chat-messenger/chat-messenger.component';
 import { SharedModule } from '../shared/shared.module';
+import { ChatUserInfoComponent } from './chat-user-info/chat-user-info.component';
 
 
 
@@ -11,7 +12,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     ChatComponent,
     ChatListComponent,
-    ChatMessengerComponent
+    ChatMessengerComponent,
+    ChatUserInfoComponent
   ],
   imports: [
     CommonModule,

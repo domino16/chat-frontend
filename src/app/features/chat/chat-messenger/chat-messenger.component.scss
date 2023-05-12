@@ -1,8 +1,7 @@
 @import "src/styles/colors";
 
-:host {
+:host { display: flex;
   box-sizing: border-box;
-  display: flex;
   flex-direction: column;
   height: 100vh;
 }

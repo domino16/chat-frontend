@@ -1,9 +1,9 @@
 @import "src/styles/colors";
 
 :host {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   height: 100vh;
 }
 
@@ -11,8 +11,6 @@
 .chat-list-header {
   padding: 15px 0 8px;
   height: 100px;
-
-
 
   img {
     width: 70px;
@@ -26,9 +24,9 @@
     margin-left: 10px;
   }
 }
-  .divider-line {
-    border-bottom: 1px solid rgba($color: $primary-color, $alpha: 0.4);
-  }
+.divider-line {
+  border-bottom: 1px solid rgba($color: $primary-color, $alpha: 0.4);
+}
 mat-form-field {
   margin-top: 10px;
   width: 100%;
@@ -74,6 +72,7 @@ input[type="radio"] {
   height: 110px;
   border-top: 1px solid $dark-color-lighter;
   font-size: 1.6rem;
+ 
 
   &__left {
     img {
@@ -84,17 +83,30 @@ input[type="radio"] {
     }
   }
 
-  &__center {
+  &__center { 
+    overflow: hidden;
+    white-space: nowrap;
+    word-break:break-word;
     margin-left: 8px;
     p {
       margin: 2px 0px;
     }
 
-    span {
+    span { 
       margin: 2px 0px;
       color: $gray-color;
       font-size: 1.4rem;
+      z-index: -133;
     }
+
+    .text-oveflow-ellipsis {
+      width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+
+  
   }
 
   &__right {

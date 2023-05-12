@@ -9,6 +9,7 @@ import { SidenavComponent } from './components/menu/sidenav/sidenav.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [HeaderComponent, SidenavComponent, FooterComponent],
   imports: [
@@ -20,6 +21,8 @@ import { AppRoutingModule } from '../app-routing.module';
     FontAwesomeModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    HttpClientModule,
+    
   ],
   exports: [
     HeaderComponent,
@@ -32,7 +35,8 @@ import { AppRoutingModule } from '../app-routing.module';
     FlexLayoutModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
 })
 export class SharedModule {}

@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+app-chat-list {
+  width: 100%;
+  max-width: 700px;
+}
+
+app-chat-messenger {
+  
+
+}
+
+.hide{
+    display: none;
+}
+
+@media (min-width: 960px) {
+  app-chat-list {
+    width: 360px;
+  }
+}
