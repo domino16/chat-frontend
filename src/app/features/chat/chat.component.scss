@@ -9,16 +9,11 @@ app-chat-list {
   max-width: 700px;
 }
 
-app-chat-messenger {
-  
-
+.hide {
+  display: none;
 }
 
-.hide{
-    display: none;
-}
-
-@media (min-width: 960px) {
+@media (width >= 960px) {
   app-chat-list {
     width: 360px;
   }

@@ -1,13 +1,8 @@
-import { Component } from '@angular/core';
-
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-chat-messenger',
-  templateUrl: './chat-messenger.component.html',
-  styleUrls: ['./chat-messenger.component.scss'],
+  selector: "app-chat-messenger",
+  templateUrl: "./chat-messenger.component.html",
+  styleUrls: ["./chat-messenger.component.scss"],
 })
-export class ChatMessengerComponent {
-}
+export class ChatMessengerComponent {}

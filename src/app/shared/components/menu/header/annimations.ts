@@ -1,4 +1,4 @@
-import { style, transition, trigger, animate } from "@angular/animations";
+// import { style, transition, trigger, animate } from "@angular/animations";
 
 // export const headerAnimation = trigger('logoRotate', [
 //     transition(':enter', [
@@ -8,4 +8,3 @@ import { style, transition, trigger, animate } from "@angular/animations";
 //       animate('2000s linear'),
 //     ]),
 //   ]);
-  

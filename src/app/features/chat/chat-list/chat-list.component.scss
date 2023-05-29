@@ -24,9 +24,11 @@
     margin-left: 10px;
   }
 }
+
 .divider-line {
-  border-bottom: 1px solid rgba($color: $primary-color, $alpha: 0.4);
+  border-bottom: 1px solid rgba($color: $primary-color, $alpha: 40%);
 }
+
 mat-form-field {
   margin-top: 10px;
   width: 100%;
@@ -48,6 +50,7 @@ mat-form-field {
   ::ng-deep .mdc-text-field--focused .mdc-notched-outline > * {
     border-color: $primary-color !important;
   }
+
   ::ng-deep .mdc-text-field--focused .mdc-floating-label > * {
     color: $primary-color !important;
   }
@@ -57,22 +60,12 @@ mat-form-field {
   overflow-y: scroll;
 }
 
-input[type="radio"] {
-  display: none;
-  &:checked {
-    + .box {
-      background-color: $dark-color-lighter;
-    }
-  }
-}
-
 .box {
   position: relative;
   width: 100%;
   height: 110px;
   border-top: 1px solid $dark-color-lighter;
   font-size: 1.6rem;
- 
 
   &__left {
     img {
@@ -83,17 +76,18 @@ input[type="radio"] {
     }
   }
 
-  &__center { 
+  &__center {
     overflow: hidden;
     white-space: nowrap;
-    word-break:break-word;
+    word-break: break-word;
     margin-left: 8px;
+
     p {
-      margin: 2px 0px;
+      margin: 2px 0;
     }
 
-    span { 
-      margin: 2px 0px;
+    span {
+      margin: 2px 0;
       color: $gray-color;
       font-size: 1.4rem;
       z-index: -133;
@@ -104,9 +98,6 @@ input[type="radio"] {
       text-overflow: ellipsis;
       overflow: hidden;
     }
-
-
-  
   }
 
   &__right {
@@ -124,6 +115,16 @@ input[type="radio"] {
       background-color: $primary-color;
       text-align: center;
       margin: 8px 0;
+    }
+  }
+}
+
+input[type="radio"] {
+  display: none;
+
+  &:checked {
+    + .box {
+      background-color: $dark-color-lighter;
     }
   }
 }

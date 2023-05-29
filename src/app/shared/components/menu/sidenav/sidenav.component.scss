@@ -1,11 +1,11 @@
-@import 'src/styles/colors';
+@import "src/styles/colors";
 
-:host{
-    position: absolute;
-    inset:0;
-    background-color: $secondary-color;
+:host {
+  position: absolute;
+  inset: 0;
+  background-color: $secondary-color;
 }
 
-.navigation{
- height: 100%;
+.navigation {
+  height: 100%;
 }

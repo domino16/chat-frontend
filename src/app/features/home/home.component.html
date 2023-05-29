@@ -2,17 +2,17 @@
 <div fxLayout fxLayout.lt-md="column" class="home-wrapper">
   <div fxFlex class="home-side--left">
     <h1>
-      Hang out <br />
+      Hang out
+      <br />
       anytime, anywhere
     </h1>
-    <h3>
-      Simple, reliable messaging and private calls for free, available
-      worldwide.
-    </h3>
+    <h3>Simple, reliable messaging and private calls for free, available worldwide.</h3>
 
     <!-- ######## signIn ######################### -->
 
-    <form [formGroup]="loginForm"  fxLayout="column" (submit)="logInClick()">
+    <form [formGroup]="loginForm" fxLayout="column" (submit)="logInClick()">
+      <!-- TODO: improve alert danger -->
+      <div class="alert-danger" style="color:red">{{errorMessage | async}}</div>
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input type="email" matInput formControlName="emailFormControl" />
@@ -25,7 +25,7 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="passwordFormControl"/>
+        <input type="password" matInput formControlName="passwordFormControl" />
       </mat-form-field>
       <div fxLayout>
         <button mat-fab extended>Log In</button>
@@ -41,8 +41,8 @@
             ></path>
             <polyline points="1 9 7 14 15 4"></polyline>
           </svg>
-          <span>Keep me signed in</span></label
-        >
+          <span>Keep me signed in</span>
+        </label>
       </div>
     </form>
 

@@ -1,12 +1,12 @@
 @import "src/styles/colors";
 @import "src/styles/variables";
 
-:host{
-position:fixed;
+:host {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(0deg, rgba($dark-color, $alpha: 0.9) 0%, rgba($dark-color, $alpha: 0.995) 33%);;
+  background: linear-gradient(0deg, rgba($dark-color, $alpha: 0.9) 0%, rgba($dark-color, $alpha: 0.995) 33%);
   z-index: 1;
 }
 
@@ -19,7 +19,6 @@ mat-toolbar {
   list-style: none;
 }
 
-
 .logo-subtitle {
   margin-left: 8px;
 }
@@ -27,7 +26,6 @@ mat-toolbar {
 img {
   height: 2em;
 }
-
 
 ul li {
   display: inline-block;
@@ -44,22 +42,19 @@ ul {
   margin-right: 0;
 }
 
-.bottom-line{
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background-color: rgba($color: $primary-color, $alpha: .5);
+.bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba($color: $primary-color, $alpha: 50%);
 }
 
-.header-item{
+.header-item {
   z-index: 1;
 }
 
-app-sidenav{
- 
+app-sidenav {
   height: 100vh;
 }
-
-

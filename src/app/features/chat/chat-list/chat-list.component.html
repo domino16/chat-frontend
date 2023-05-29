@@ -1,27 +1,19 @@
-
-  <div class="chat-list-header" [ngClass]="{'divider-line': showLine}">
-    <div fxFlex="0 0 90px" fxLayout fxLayoutAlign="end">
-      <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="avatar" />
-    </div>
-    <div
-      fxFlex="1 1"
-      fxLayout="column"
-      fxFlexAlign="center"
-    > <p>Dominik Pietrzyk</p>
-    </div>
+<div class="chat-list-header" [ngClass]="{ 'divider-line': showLine }">
+  <div fxFlex="0 0 90px" fxLayout fxLayoutAlign="end">
+    <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="avatar" />
   </div>
-<div class="chat-list-wrapper" (scroll)="onScroll($event)" >
-
+  <div fxFlex="1 1" fxLayout="column" fxFlexAlign="center"><p>Dominik Pietrzyk</p></div>
+</div>
+<div class="chat-list-wrapper" (scroll)="onScroll($event)">
   <mat-form-field appearance="outline">
-    <mat-label>Search friends <fa-icon [icon]="faSearch"></fa-icon></mat-label>
-    <input type="text"
-           aria-label="Number"
-           matInput
-           [formControl]="searchControl"
-           [matAutocomplete]="auto">
+    <mat-label>
+      Search friends
+      <fa-icon [icon]="faSearch"></fa-icon>
+    </mat-label>
+    <input type="text" aria-label="Number" matInput [formControl]="searchControl" [matAutocomplete]="auto" />
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let user of users" [value]="user">
-        {{user}}
+      <mat-option (click)="onUserSelect(user.email, user.firstName)" *ngFor="let user of filteredAllUsers$ | async " [value]="user.email">
+        {{ user.firstName }} {{ user.lastName }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
@@ -30,27 +22,13 @@
     <input type="radio" name="radio" />
     <div fxLayout class="box">
       <div class="box__left" fxFlex="0 0 65px" fxLayout fxLayoutAlign="end">
-        <img
-          fxFlexAlign="center"
-          src="../../../assets/attractive-g1a110e6c7_640.jpg"
-          alt=""
-        />
+        <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="" />
       </div>
-      <div
-        class="box__center"
-        fxFlex="1 1"
-        fxLayout="column"
-        fxFlexAlign="center"
-      >
+      <div class="box__center" fxFlex="1 1" fxLayout="column" fxFlexAlign="center">
         <p>Dominik Pietrzyk</p>
-        <span class="text-oveflow-ellipsis" >last mduntue hic.  </span>
+        <span class="text-oveflow-ellipsis">last mduntue hic.</span>
       </div>
-      <div
-        class="box__right"
-        fxFlex="0 0 50px"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
+      <div class="box__right" fxFlex="0 0 50px" fxLayout="column" fxLayoutAlign="center center">
         <span class="last-message-date">8:12</span>
         <p class="last-message-notification">12</p>
       </div>
@@ -60,27 +38,13 @@
     <input type="radio" name="radio" />
     <div fxLayout class="box">
       <div class="box__left" fxFlex="0 0 65px" fxLayout fxLayoutAlign="end">
-        <img
-          fxFlexAlign="center"
-          src="../../../assets/attractive-g1a110e6c7_640.jpg"
-          alt=""
-        />
+        <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="" />
       </div>
-      <div
-        class="box__center"
-        fxFlex="1 1"
-        fxLayout="column"
-        fxFlexAlign="center"
-      >
+      <div class="box__center" fxFlex="1 1" fxLayout="column" fxFlexAlign="center">
         <p>Dominik Pietrzyk</p>
-        <span class="text-oveflow-ellipsis" >last mduntue hic.  </span>
+        <span class="text-oveflow-ellipsis">last mduntue hic.</span>
       </div>
-      <div
-        class="box__right"
-        fxFlex="0 0 50px"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
+      <div class="box__right" fxFlex="0 0 50px" fxLayout="column" fxLayoutAlign="center center">
         <span class="last-message-date">8:12</span>
         <p class="last-message-notification">12</p>
       </div>
@@ -91,27 +55,13 @@
     <input type="radio" name="radio" />
     <div fxLayout class="box">
       <div class="box__left" fxFlex="0 0 65px" fxLayout fxLayoutAlign="end">
-        <img
-          fxFlexAlign="center"
-          src="../../../assets/attractive-g1a110e6c7_640.jpg"
-          alt=""
-        />
+        <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="" />
       </div>
-      <div
-        class="box__center"
-        fxFlex="1 1"
-        fxLayout="column"
-        fxFlexAlign="center"
-      >
+      <div class="box__center" fxFlex="1 1" fxLayout="column" fxFlexAlign="center">
         <p>Dominik Pietrzyk</p>
-        <span class="text-oveflow-ellipsis" >last mduntue hic.  </span>
+        <span class="text-oveflow-ellipsis">last mduntue hic.</span>
       </div>
-      <div
-        class="box__right"
-        fxFlex="0 0 50px"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
+      <div class="box__right" fxFlex="0 0 50px" fxLayout="column" fxLayoutAlign="center center">
         <span class="last-message-date">8:12</span>
         <p class="last-message-notification">12</p>
       </div>
@@ -122,27 +72,13 @@
     <input type="radio" name="radio" />
     <div fxLayout class="box">
       <div class="box__left" fxFlex="0 0 65px" fxLayout fxLayoutAlign="end">
-        <img
-          fxFlexAlign="center"
-          src="../../../assets/attractive-g1a110e6c7_640.jpg"
-          alt=""
-        />
+        <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="" />
       </div>
-      <div
-        class="box__center"
-        fxFlex="1 1"
-        fxLayout="column"
-        fxFlexAlign="center"
-      >
+      <div class="box__center" fxFlex="1 1" fxLayout="column" fxFlexAlign="center">
         <p>Dominik Pietrzyk</p>
-        <span class="text-oveflow-ellipsis" >last mduntue hic. dsadasdsaaaaaaaaaaaaaaaaadassssssssssssssss </span>
+        <span class="text-oveflow-ellipsis">last mduntue hic. dsadasdsaaaaaaaaaaaaaaaaadassssssssssssssss</span>
       </div>
-      <div
-        class="box__right"
-        fxFlex="0 0 50px"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
+      <div class="box__right" fxFlex="0 0 50px" fxLayout="column" fxLayoutAlign="center center">
         <span class="last-message-date">8:12</span>
         <p class="last-message-notification">12</p>
       </div>
@@ -153,27 +89,13 @@
     <input type="radio" name="radio" />
     <div fxLayout class="box">
       <div class="box__left" fxFlex="0 0 65px" fxLayout fxLayoutAlign="end">
-        <img
-          fxFlexAlign="center"
-          src="../../../assets/attractive-g1a110e6c7_640.jpg"
-          alt=""
-        />
+        <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="" />
       </div>
-      <div
-        class="box__center"
-        fxFlex="1 1"
-        fxLayout="column"
-        fxFlexAlign="center"
-      >
+      <div class="box__center" fxFlex="1 1" fxLayout="column" fxFlexAlign="center">
         <p>Dominik Pietrzyk</p>
-        <span class="text-oveflow-ellipsis" >last mduntue hic.  </span>
+        <span class="text-oveflow-ellipsis">last mduntue hic.</span>
       </div>
-      <div
-        class="box__right"
-        fxFlex="0 0 50px"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
+      <div class="box__right" fxFlex="0 0 50px" fxLayout="column" fxLayoutAlign="center center">
         <span class="last-message-date">8:12</span>
         <p class="last-message-notification">12</p>
       </div>
@@ -184,27 +106,13 @@
     <input type="radio" name="radio" />
     <div fxLayout class="box">
       <div class="box__left" fxFlex="0 0 65px" fxLayout fxLayoutAlign="end">
-        <img
-          fxFlexAlign="center"
-          src="../../../assets/attractive-g1a110e6c7_640.jpg"
-          alt=""
-        />
+        <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="" />
       </div>
-      <div
-        class="box__center"
-        fxFlex="1 1"
-        fxLayout="column"
-        fxFlexAlign="center"
-      >
+      <div class="box__center" fxFlex="1 1" fxLayout="column" fxFlexAlign="center">
         <p>Dominik Pietrzyk</p>
-        <span class="text-oveflow-ellipsis" >last mduntue hic.  </span>
+        <span class="text-oveflow-ellipsis">last mduntue hic.</span>
       </div>
-      <div
-        class="box__right"
-        fxFlex="0 0 50px"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
+      <div class="box__right" fxFlex="0 0 50px" fxLayout="column" fxLayoutAlign="center center">
         <span class="last-message-date">8:12</span>
         <p class="last-message-notification">12</p>
       </div>
@@ -215,27 +123,13 @@
     <input type="radio" name="radio" />
     <div fxLayout class="box">
       <div class="box__left" fxFlex="0 0 65px" fxLayout fxLayoutAlign="end">
-        <img
-          fxFlexAlign="center"
-          src="../../../assets/attractive-g1a110e6c7_640.jpg"
-          alt=""
-        />
+        <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="" />
       </div>
-      <div
-        class="box__center"
-        fxFlex="1 1"
-        fxLayout="column"
-        fxFlexAlign="center"
-      >
+      <div class="box__center" fxFlex="1 1" fxLayout="column" fxFlexAlign="center">
         <p>Dominik Pietrzyk</p>
-        <span class="text-oveflow-ellipsis" >last mduntue hic.  </span>
+        <span class="text-oveflow-ellipsis">last mduntue hic.</span>
       </div>
-      <div
-        class="box__right"
-        fxFlex="0 0 50px"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
+      <div class="box__right" fxFlex="0 0 50px" fxLayout="column" fxLayoutAlign="center center">
         <span class="last-message-date">8:12</span>
         <p class="last-message-notification">12</p>
       </div>
@@ -245,59 +139,13 @@
     <input type="radio" name="radio" />
     <div fxLayout class="box">
       <div class="box__left" fxFlex="0 0 65px" fxLayout fxLayoutAlign="end">
-        <img
-          fxFlexAlign="center"
-          src="../../../assets/attractive-g1a110e6c7_640.jpg"
-          alt=""
-        />
+        <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="" />
       </div>
-      <div
-        class="box__center"
-        fxFlex="1 1"
-        fxLayout="column"
-        fxFlexAlign="center"
-      >
+      <div class="box__center" fxFlex="1 1" fxLayout="column" fxFlexAlign="center">
         <p>Dominik Pietrzyk</p>
-        <span class="text-oveflow-ellipsis" >last mduntue hic.  </span>
+        <span class="text-oveflow-ellipsis">last mduntue hic.</span>
       </div>
-      <div
-        class="box__right"
-        fxFlex="0 0 50px"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
-        <span class="last-message-date">8:12</span>
-        <p class="last-message-notification">12</p>
-      </div>
-    </div>
-  </label>
-
-
-  <label>
-    <input type="radio" name="radio" />
-    <div fxLayout class="box">
-      <div class="box__left" fxFlex="0 0 65px" fxLayout fxLayoutAlign="end">
-        <img
-          fxFlexAlign="center"
-          src="../../../assets/attractive-g1a110e6c7_640.jpg"
-          alt=""
-        />
-      </div>
-      <div
-        class="box__center"
-        fxFlex="1 1"
-        fxLayout="column"
-        fxFlexAlign="center"
-      >
-        <p>Dominik Pietrzyk</p>
-        <span class="text-oveflow-ellipsis" >last mduntue hic.  </span>
-      </div>
-      <div
-        class="box__right"
-        fxFlex="0 0 50px"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
+      <div class="box__right" fxFlex="0 0 50px" fxLayout="column" fxLayoutAlign="center center">
         <span class="last-message-date">8:12</span>
         <p class="last-message-notification">12</p>
       </div>
@@ -308,31 +156,33 @@
     <input type="radio" name="radio" />
     <div fxLayout class="box">
       <div class="box__left" fxFlex="0 0 65px" fxLayout fxLayoutAlign="end">
-        <img
-          fxFlexAlign="center"
-          src="../../../assets/attractive-g1a110e6c7_640.jpg"
-          alt=""
-        />
+        <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="" />
       </div>
-      <div
-        class="box__center"
-        fxFlex="1 1"
-        fxLayout="column"
-        fxFlexAlign="center"
-      >
+      <div class="box__center" fxFlex="1 1" fxLayout="column" fxFlexAlign="center">
         <p>Dominik Pietrzyk</p>
-        <span class="text-oveflow-ellipsis" >last mduntue hic.  </span>
+        <span class="text-oveflow-ellipsis">last mduntue hic.</span>
       </div>
-      <div
-        class="box__right"
-        fxFlex="0 0 50px"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
+      <div class="box__right" fxFlex="0 0 50px" fxLayout="column" fxLayoutAlign="center center">
         <span class="last-message-date">8:12</span>
         <p class="last-message-notification">12</p>
       </div>
     </div>
   </label>
 
+  <label>
+    <input type="radio" name="radio" />
+    <div fxLayout class="box">
+      <div class="box__left" fxFlex="0 0 65px" fxLayout fxLayoutAlign="end">
+        <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="" />
+      </div>
+      <div class="box__center" fxFlex="1 1" fxLayout="column" fxFlexAlign="center">
+        <p>Dominik Pietrzyk</p>
+        <span class="text-oveflow-ellipsis">last mduntue hic.</span>
+      </div>
+      <div class="box__right" fxFlex="0 0 50px" fxLayout="column" fxLayoutAlign="center center">
+        <span class="last-message-date">8:12</span>
+        <p class="last-message-notification">12</p>
+      </div>
+    </div>
+  </label>
 </div>

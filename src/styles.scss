@@ -1,9 +1,10 @@
 @use "@angular/material" as mat;
-@include mat.core();
 
 @import "src/styles/variables";
 @import "src/styles/pallete";
 @import "src/styles/colors";
+
+@include mat.core();
 
 //####### custom pallete for mat-form-field elements
 $my-primary: mat.define-palette($custom-primary, 500);
@@ -23,11 +24,13 @@ $my-theme: mat.define-light-theme(
 
 // @include mat.form-field-theme($my-theme);
 @include mat.all-component-themes($my-theme);
+
 /* You can add global styles to this file, and also import other style files */
-*{
+* {
   ::-webkit-scrollbar {
     width: 20px;
   }
+
   ::-webkit-scrollbar-track {
     background-color: transparent;
   }
@@ -53,7 +56,6 @@ body {
   background-color: $dark-color;
   margin: 0;
   padding: 0;
-  
 }
 
 app-root {

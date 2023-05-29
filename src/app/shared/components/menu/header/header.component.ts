@@ -1,20 +1,18 @@
-import { Component} from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent {
-
-// true, when menu is open
-isMenuActive = false;
+  // true, when menu is open
+  isMenuActive = false;
 
   // true, when page is scrolled
-  isScrolled:boolean= false
+  isScrolled = false;
 
   onScroll() {
-    window.scrollY > 40 ? this.isScrolled = true: this.isScrolled = false;
+    window.scrollY > 40 ? (this.isScrolled = true) : (this.isScrolled = false);
   }
-
 }
