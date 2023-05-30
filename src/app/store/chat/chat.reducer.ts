@@ -6,7 +6,7 @@ import { Chat } from "src/app/core/interfaces/chat";
 
 export const chatsFeatureKey = "chats";
 
-export interface State extends EntityState<Chat> {
+export interface ChatState extends EntityState<Chat> {
   allChatsLoaded: boolean;
   }
 
@@ -14,7 +14,7 @@ export const chatAdapter: EntityAdapter<Chat> = createEntityAdapter<Chat>({
   selectId: (chat: Chat) => chat.chatId
 });
 
-export const initialState: State = chatAdapter.getInitialState({
+export const initialState: ChatState = chatAdapter.getInitialState({
   allChatsLoaded: false
 });
 
