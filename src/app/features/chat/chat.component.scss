@@ -5,7 +5,6 @@
 }
 
 app-chat-list {
-  width: 100%;
   max-width: 700px;
 }
 
@@ -16,5 +15,12 @@ app-chat-list {
 @media (width >= 960px) {
   app-chat-list {
     width: 360px;
+  }
+}
+
+
+@media(min-width:400px) {
+  app-chat-list {
+    min-width:360px
   }
 }

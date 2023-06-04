@@ -4,6 +4,7 @@ import { Observable, first, switchMap } from "rxjs";
 import { Chat } from "../interfaces/chat";
 import { Store } from "@ngrx/store";
 import { authUser } from "src/app/store/auth/auth.selectors";
+import { Message } from "../interfaces/message";
 
 export interface createChatRequest {
   senderId: string;
@@ -39,8 +40,8 @@ export class ChatService {
     );
   }
 
-  getMessages(senderId: string, recipientId: string, limit: number) {
-    return this.http.get(this.url + "/messages/" + senderId + "/" + recipientId + "/" + limit);
+  getMessages(senderId: string, recipientId: string, limit: number):Observable<Message[]> {
+    return this.http.get<Message[]>(this.url + "/messages/" + senderId + "/" + recipientId + "/" + limit);
   }
 
   countReceivedMessages(senderId: string, recipientId: string) {

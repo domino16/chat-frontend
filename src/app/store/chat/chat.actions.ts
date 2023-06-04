@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
-import { Update } from "@ngrx/entity";
 import { Chat } from "src/app/core/interfaces/chat";
+import { Message } from "src/app/core/interfaces/message";
 
 export const loadChats = createAction("[Chat/API] Load Chats", props<{userEmail:string}>());
 
@@ -8,19 +8,13 @@ export const allChatsLoaded = createAction("[[Chat/API]] All Chats Loaded", prop
 
 export const addChat = createAction("[Chat/API] Add Chat", props<{ chat: Chat }>());
 
-export const upsertChat = createAction("[Chat/API] Upsert Chat", props<{ chat: Chat }>());
+export const selectChat = createAction("[Chat/API] Set Selected Chat", props<{selectedChat:Chat}>());
 
-export const addChats = createAction("[Chat/API] Add Chats", props<{ chats: Chat[] }>());
 
-export const upsertChats = createAction("[Chat/API] Upsert Chats", props<{ chats: Chat[] }>());
+export const loadMessages = createAction('[Chat/API] Load Message', props<{senderId:string, recipientId:string, limit:number}>())
 
-export const updateChat = createAction("[Chat/API] Update Chat", props<{ chat: Update<Chat> }>());
+export const allMessagesLoaded = createAction('[Chat/API] All Messages Loaded', props<{messages:Message[]}>())
 
-export const updateChats = createAction("[Chat/API] Update Chats", props<{ chats: Update<Chat>[] }>());
+export const sendMessage = createAction('[Chat/API] Send Message', props<{messageContent:string}>())
 
-export const deleteChat = createAction("[Chat/API] Delete Chat", props<{ id: string }>());
-
-export const deleteChats = createAction("[Chat/API] Delete Chats", props<{ ids: string[] }>());
-
-export const clearChats = createAction("[Chat/API] Clear Chats");
-
+export const sendMessageSucess = createAction('[Chat/API] Send Message Sucess', props<{message:Message}>())

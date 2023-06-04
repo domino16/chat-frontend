@@ -1,3 +1,4 @@
+<ng-container *ngIf="selectedChat | async as chat" >
 <!-- ####################  section header ##########################################-->
 <div fxFlex="0 0 80px" fxLayout class="chat-messenger__header">
   <a fxLayoutAlign="center center" fxLayout href="">
@@ -5,7 +6,7 @@
   </a>
   <div fxFlex="1 1" fxLayoutAlign="center center">
     <img src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="logo" />
-    <span>Dominik Pietrzyk</span>
+    <span>{{chat.recipientName}}</span>
   </div>
   <a fxLayoutAlign="center center" href="">
     <mat-icon fxLayoutAlign="center" fxFlex="0 0 45px">more_vert</mat-icon>
@@ -18,23 +19,24 @@
   <div fxLayout fxLayoutAlign="start end">
     <img class="img-avatar-beside-message" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="avatar" />
     <div class="message-bubble message-bubble--left">
-      ipsum dolor sit amet consectetur adipisicing elit. Mollitia reiciendis ut Lorem ipsum dolor sit amet consectetur
+      ipsum dolor sit a ,mmet consectetur adipisicing elit. Mollitia reiciendis ut Lorem ipsum dolor sit amet consectetur
       adipisicing elit. Amet aspernatur accusamus ea voluptatem officiis quis. Ea porro ex minus quae.
     </div>
   </div>
-  <div class="bubble-divider"></div>
-  <div class="message-bubble message-bubble--right">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet aspernatur accusamus ea voluptatem officiis quis. Ea
-    porro ex minus quae.
-  </div>
+  <ng-container *ngFor="let message of messages | async">
+  <div class="bubble-divider" ></div>
+  <div  class="message-bubble message-bubble--right">
+    {{message.content}}
+  </div></ng-container>
 </div>
 
-<!-- #################### sender section #########################################-->
+<!-- #################### send section #########################################-->
 <div fxFlex="0 0 60px" fxLayout="" class="chat-messenger__sender">
   <div fxFlex="1 1" fxLayoutAlign="center center">
-    <input type="text" placeholder="Write a message..." />
+    <input type="text" [formControl]="sendMessageControl" placeholder="Write a message..." />
   </div>
-  <div fxLayout fxFlex="0 0 60px" fxLayoutAlign="center center">
-    <mat-icon>send</mat-icon>
+  <div fxLayout (click)="onSendMessage()" fxFlex="0 0 60px" fxLayoutAlign="center center">
+    <mat-icon >send</mat-icon>
   </div>
 </div>
+</ng-container>

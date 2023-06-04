@@ -1,11 +1,14 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { ChatState, selectAll } from "./chat.reducer";
+import * as fromChat from "./chat.reducer";
 
-export const CHAT_STATE_NAME = 'chat'
+export const CHAT_STATE_NAME = "chat";
 
-export const getChatState = createFeatureSelector<ChatState>(CHAT_STATE_NAME);
+export const getChatState = createFeatureSelector<fromChat.ChatState>(CHAT_STATE_NAME);
 
-export const selectAllChats = createSelector(
-    getChatState,
-    selectAll
-  );
+export const getSelectedChat = createSelector(getChatState, (state) => state.selectedChat);
+
+export const selectChatState = createSelector(getChatState, fromChat.selectChatState);
+export const selectAllChats = createSelector(selectChatState, fromChat.selectAllChats);
+
+export const selectMessageState = createSelector(getChatState, fromChat.selectMessagesState);
+export const selectAllMessages = createSelector(selectMessageState, fromChat.selectAllMessages);

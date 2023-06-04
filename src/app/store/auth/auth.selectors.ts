@@ -7,4 +7,6 @@ export const getAuthState = createFeatureSelector<authState>(AUTH_STATE_NAME);
 
 export const authUser = createSelector(getAuthState, state => state.user);
 
+export const selectAuthUserId = createSelector(getAuthState, state => state.user?.email);
+
 export const errorMessage = createSelector(getAuthState, state => state.errorMessage)

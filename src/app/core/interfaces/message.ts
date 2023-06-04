@@ -3,5 +3,6 @@ export interface Message{
   senderId: string;
   recipientId: string;
   content: string;
-  creationDate: string;
+  creationDate?: Date;
+  messageStatus?: 'RECEIVED' | 'DELIVERED'
 }
