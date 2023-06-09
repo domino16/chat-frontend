@@ -10,7 +10,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "../app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
-import { LoaderComponent } from './shared/components/loader/loader.component';
+import { LoaderComponent } from './components/loader/loader.component';
+
 @NgModule({
   declarations: [HeaderComponent, SidenavComponent, FooterComponent, LoaderComponent],
   imports: [
