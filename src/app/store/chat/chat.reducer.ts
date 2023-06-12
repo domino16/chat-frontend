@@ -8,18 +8,20 @@ export interface ChatsEntityState extends EntityState<Chat> {
   allChatsLoaded: boolean;
 }
 
-export type MessagesEntityState = EntityState<Message>
+export interface MessagesEntityState extends EntityState<Message>{
+   allMessagesLoaded: boolean;
+}
 
 export const chatsAdapter: EntityAdapter<Chat> = createEntityAdapter<Chat>({
   selectId: (chat: Chat) => chat.chatId,
 });
 
-export const messagesAdapter: EntityAdapter<Message> = createEntityAdapter<Message>({})
+export const messagesAdapter: EntityAdapter<Message> = createEntityAdapter<Message>({});
 
 export interface ChatState {
-  chats: EntityState<Chat>;
+  chats: ChatsEntityState;
   selectedChat: Chat | null;
-  messages:EntityState<Message>
+  messages: MessagesEntityState;
 }
 
 export const initialState: ChatState = {
@@ -39,15 +41,19 @@ export const chatReducer = createReducer(
     ...state,
     messages: messagesAdapter.setAll(action.messages, { ...state.messages, allMessagesLoaded: true }),
   })),
-  on(ChatActions.selectChat, (state, action) => ({ ...state, selectedChat: action.selectedChat })),
-  on(ChatActions.sendMessageSucess, (state, action)=> ({ ...state, messages: messagesAdapter.addOne(action.message, state.messages)}))
+  on(ChatActions.selectChat, (state, action) => ({
+    ...state,
+    selectedChat: action.selectedChat,
+    messages: { ...state.messages, allMessagesLoaded: false },
+  })),
+  on(ChatActions.addMessage, (state, action) => ({
+    ...state,
+    messages: messagesAdapter.addOne(action.message, state.messages),
+  })),
 );
 
 export const selectChatState = (state: ChatState) => state.chats;
 export const selectMessagesState = (state: ChatState) => state.messages;
 
-// export const { selectIds, selectEntities, selectAll, selectTotal } = chatsAdapter.getSelectors();
-// export const { selectIds, selectEntities, selectAll, selectTotal } = messagesAdapter.getSelectors();
-
-export const { selectAll:selectAllChats} = chatsAdapter.getSelectors();
-export const {  selectAll:selectAllMessages} = messagesAdapter.getSelectors();
+export const { selectAll: selectAllChats } = chatsAdapter.getSelectors();
+export const { selectAll: selectAllMessages } = messagesAdapter.getSelectors();

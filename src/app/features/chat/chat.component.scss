@@ -1,12 +1,15 @@
 :host {
   display: flex;
   width: 100%;
+  box-sizing: border-box;
   justify-content: center;
 }
 
 app-chat-list {
   max-width: 700px;
+  width: 100%;
 }
+
 
 .hide {
   display: none;
@@ -15,6 +18,9 @@ app-chat-list {
 @media (width >= 960px) {
   app-chat-list {
     width: 360px;
+  }
+  app-chat-messenger{
+    width: 100%;
   }
 }
 

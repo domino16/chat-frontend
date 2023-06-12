@@ -1,2 +1,2 @@
-<app-chat-list  *ngIf="!isOpenChat || !isMobile"></app-chat-list>
-<app-chat-messenger  *ngIf="isOpenChat || !isMobile"></app-chat-messenger>
+<app-chat-list  *ngIf="(isOpenChat | async) === false || !isMobile"></app-chat-list>
+<app-chat-messenger  *ngIf="(isOpenChat | async) || !isMobile"></app-chat-messenger>

@@ -44,6 +44,10 @@ export class ChatService {
     return this.http.get<Message[]>(this.url + "/messages/" + senderId + "/" + recipientId + "/" + limit);
   }
 
+  // getMessage(messageId:string):Observable<Message> {
+  //   return this.http.get<Message>(this.url + "/messages/" + messageId);
+  // }
+
   countReceivedMessages(senderId: string, recipientId: string) {
     return this.http.get(this.url + "/messages/count/" + senderId + "/" + recipientId);
   }

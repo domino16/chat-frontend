@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, concatLatestFrom, createEffect, ofType } from "@ngrx/effects";
-import { concatMap, map, switchMap } from "rxjs/operators";
+import { concatMap, filter, map, switchMap } from "rxjs/operators";
 import { ChatService } from "src/app/core/services/chat.service";
 import {
   loadChats,
@@ -8,7 +8,7 @@ import {
   allMessagesLoaded,
   loadMessages,
   sendMessage,
-  sendMessageSucess,
+  selectChat,
 } from "./chat.actions";
 import { Store } from "@ngrx/store";
 import { Observable, of } from "rxjs";
@@ -16,7 +16,6 @@ import { selectAuthUserId } from "../auth/auth.selectors";
 import { getSelectedChat } from "./chat.selectors";
 import { Chat } from "src/app/core/interfaces/chat";
 import { RxStompService } from "src/app/core/services/rx-stomp.service";
-import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class ChatEffects {
@@ -34,28 +33,41 @@ export class ChatEffects {
   loadMessages$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadMessages),
-      switchMap((action) => this.chatService.getMessages(action.senderId, action.recipientId, action.limit)),
+      concatLatestFrom(() => [this.authUserId$, this.selectedChat$]),
+      switchMap(([, authUserId, selectedChat]) => this.chatService.getMessages(authUserId as string, selectedChat?.recipientId as string, 20)),
       map((messages) => allMessagesLoaded({ messages })),
     ),
   );
 
-  sendMessages$ = createEffect(() =>
+  sendMessage$ = createEffect(() =>
     this.actions$.pipe(
       ofType(sendMessage),
-      concatLatestFrom(() => [of(uuidv4()), this.selectedChat$, this.authUserId$, of(new Date())]),
-      map(([action,uuidv4, selectedChat, authUserId, creationDate]) => {
+      concatLatestFrom(() => [this.selectedChat$, this.authUserId$, of(new Date())]),
+      map(([action, selectedChat, authUserId, creationDate]) => {
         const message = {
-          id:uuidv4,
           senderId: authUserId as string,
           recipientId: selectedChat?.recipientId as string,
           content: action.messageContent,
           creationDate: creationDate,
         };
-         this.rxStompService.publish({ destination: '/app/messages', body:JSON.stringify(message) })
-      return sendMessageSucess({ message });
+         this.rxStompService.publish({ destination: '/app/messages', body:JSON.stringify(message)})
+         setTimeout(() => {
+           this.store.dispatch(loadMessages())
+         },400);
+         return loadMessages()
       }),
+    )
+  );
+
+  selectChat$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(selectChat),
+      filter(action => !!action.selectedChat),
+      map(() => {
+        return loadMessages()}),
     ),
   );
+
 
   constructor(
     private actions$: Actions,

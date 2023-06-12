@@ -2,14 +2,13 @@ import { Component } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Store } from "@ngrx/store";
-import { Observable, debounceTime, first, interval, noop, switchMap, tap } from "rxjs";
+import { Observable, debounceTime, first, switchMap, tap } from "rxjs";
 import { Chat } from "src/app/core/interfaces/chat";
 import { User } from "src/app/core/interfaces/user";
 import { ChatService } from "src/app/core/services/chat.service";
 import { UserService } from "src/app/core/services/user.service";
-import { authUser } from "src/app/store/auth/auth.selectors";
-import { loadMessages, selectChat } from "src/app/store/chat/chat.actions";
-import { selectAllChats } from "src/app/store/chat/chat.selectors";
+import { selectChat } from "src/app/store/chat/chat.actions";
+import { isChatsLoaded, selectAllChats } from "src/app/store/chat/chat.selectors";
 
 @Component({
   selector: "app-chat-list",
@@ -19,6 +18,8 @@ import { selectAllChats } from "src/app/store/chat/chat.selectors";
 export class ChatListComponent {
   // true when divide line is visible
   showLine = false;
+
+  isChatsLoaded:Observable<boolean> = this.store.select(isChatsLoaded)
 
   // fontawesome icon
   faSearch = faSearch;
@@ -42,12 +43,6 @@ export class ChatListComponent {
 
   onChatSelectChange(chat: Chat) {
     this.store.dispatch(selectChat({selectedChat:chat}));
-    this.store.select(authUser).pipe(first(),tap((user)=>{user ?
-      this.store.dispatch(
-         loadMessages({senderId:user.email ,recipientId:chat.recipientId, limit:20})) : noop
-    })).subscribe()
-    
-    console.log(chat);
   }
 
   //set selected chat when user is clicked in chat list search engine
