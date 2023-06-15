@@ -51,6 +51,7 @@ export class ChatEffects {
           creationDate: creationDate,
         };
          this.rxStompService.publish({ destination: '/app/messages', body:JSON.stringify(message)})
+        //  await rxStomp.asyncReceipt(receiptId);; // it yields the actual Frame
          setTimeout(() => {
            this.store.dispatch(loadMessages())
          },400);

@@ -18,7 +18,6 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.onResize();  
-    this.authService.autoLogin()
   }
 
   @HostListener("window:resize", ["$event"])

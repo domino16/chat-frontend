@@ -7,6 +7,8 @@ import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { loadChats, loadMessages } from "../chat/chat.actions";
 import { RxStompService } from "src/app/core/services/rx-stomp.service";
+import jwtDecode from "jwt-decode";
+import { User } from "src/app/core/interfaces/user";
 
 
 
@@ -17,7 +19,12 @@ export class AuthEffects {
       ofType(loginStart),
       exhaustMap((action) => {
         return this.authService.getAuth(action.email, action.password).pipe(
-          map((user) =>  loginSuccess({ authUser: user })),
+          map((accessToken) => {
+            // console.log(accessToken.token);
+            const authUser:User = jwtDecode(accessToken.token)
+            console.log(authUser);
+            this.authService.handleAuth(accessToken.token);
+             return loginSuccess({ authUser })}),
           catchError((error) => of(loginFailure({ error: error.error.message }))),
         );
       }),
@@ -44,7 +51,6 @@ export class AuthEffects {
       switchMap((action)=>{
         this.router.navigate(["/chat"]);
         this.store.dispatch(loadChats({userEmail:action.authUser.email}));
-        this.authService.handleAuth(action.authUser);
         return this.rxStompService.watch(`/user/${action.authUser.email}/queue/messages`)
         .pipe(map((a)=> {console.log(a)
           return loadMessages()

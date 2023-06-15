@@ -9,6 +9,7 @@ import { ChatModule } from "./features/chat/chat.module";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { jwtInterceptorProvider } from "./core/interceptors/token.interceptor";
 
 
 
@@ -24,8 +25,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
     EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
-  providers: [
-  ],
+  providers: [jwtInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {
