@@ -1,4 +1,4 @@
-import { Component} from "@angular/core";
+import { Component, EventEmitter, Output} from "@angular/core";
 import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import { Chat } from "src/app/core/interfaces/chat";
@@ -16,7 +16,9 @@ export class ChatMessengerComponent {
   sendMessageControl = new FormControl('');
   selectedChat:Observable<Chat | null> = this.store.select(getSelectedChat);
   messages:Observable<Message[]> = this.store.select(selectAllMessages);
-  isMessagesLoaded:Observable<boolean> = this.store.select(isMessagesLoaded)
+  isMessagesLoaded:Observable<boolean> = this.store.select(isMessagesLoaded);
+
+  @Output() toggle = new EventEmitter();
 
   constructor(private store: Store) {}
   
@@ -31,6 +33,10 @@ export class ChatMessengerComponent {
 //   const scrollToBottom = () => {
 //     messageBoxRef.current?.scrollIntoView({behavior: "smooth"});
 // };
+
+  onThreeDotClick():void{
+    this.toggle.emit()
+  }
 
   onSendMessage():void {
     if(!this.sendMessageControl.value) return
