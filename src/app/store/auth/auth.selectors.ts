@@ -10,3 +10,5 @@ export const authUser = createSelector(getAuthState, state => state.user);
 export const selectAuthUserId = createSelector(getAuthState, state => state.user?.email);
 
 export const errorMessage = createSelector(getAuthState, state => state.errorMessage)
+
+export const isAuthenticated = createSelector(getAuthState, state => !!state.user)

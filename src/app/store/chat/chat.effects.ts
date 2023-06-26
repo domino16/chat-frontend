@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, concatLatestFrom, createEffect, ofType } from "@ngrx/effects";
-import { concatMap, filter, map, switchMap } from "rxjs/operators";
+import { concatMap, exhaustMap, filter, map, switchMap } from "rxjs/operators";
 import { ChatService } from "src/app/core/services/chat.service";
 import {
   loadChats,
@@ -9,11 +9,13 @@ import {
   loadMessages,
   sendMessage,
   selectChat,
+  incrementMessagesLimit,
+  resetMessagesLimit,
 } from "./chat.actions";
 import { Store } from "@ngrx/store";
 import { Observable, of } from "rxjs";
 import { selectAuthUserId } from "../auth/auth.selectors";
-import { getSelectedChat } from "./chat.selectors";
+import { getSelectedChat, selectMessagesLimit } from "./chat.selectors";
 import { Chat } from "src/app/core/interfaces/chat";
 import { RxStompService } from "src/app/core/services/rx-stomp.service";
 
@@ -21,11 +23,12 @@ import { RxStompService } from "src/app/core/services/rx-stomp.service";
 export class ChatEffects {
   authUserId$: Observable<string | undefined> = this.store.select(selectAuthUserId);
   selectedChat$: Observable<Chat | null> = this.store.select(getSelectedChat);
+  messagesLimit$: Observable<number> = this.store.select(selectMessagesLimit);
 
   loadChats$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadChats),
-      concatMap((action) => this.chatService.getChats(action.userEmail)),
+      switchMap((action) => this.chatService.getChats(action.userEmail)),
       map((chats) => allChatsLoaded({ chats })),
     ),
   );
@@ -33,42 +36,53 @@ export class ChatEffects {
   loadMessages$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadMessages),
-      concatLatestFrom(() => [this.authUserId$, this.selectedChat$]),
-      switchMap(([, authUserId, selectedChat]) => this.chatService.getMessages(authUserId as string, selectedChat?.recipientId as string, 20)),
-      map((messages) => allMessagesLoaded({ messages })),
+      concatLatestFrom(() => [this.authUserId$, this.selectedChat$, this.messagesLimit$]),
+      exhaustMap(([, authUserId, selectedChat, messagesLimit]) =>
+        this.chatService.getMessages(authUserId as string, selectedChat?.recipientId as string, messagesLimit),
+      ),
+      map((messages) => {
+        return allMessagesLoaded({ messages });
+      }),
     ),
   );
 
-  sendMessage$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(sendMessage),
-      concatLatestFrom(() => [this.selectedChat$, this.authUserId$, of(new Date())]),
-      map(([action, selectedChat, authUserId, creationDate]) => {
-        const message = {
-          senderId: authUserId as string,
-          recipientId: selectedChat?.recipientId as string,
-          content: action.messageContent,
-          creationDate: creationDate,
-        };
-         this.rxStompService.publish({ destination: '/app/messages', body:JSON.stringify(message)})
-        //  await rxStomp.asyncReceipt(receiptId);; // it yields the actual Frame
-         setTimeout(() => {
-           this.store.dispatch(loadMessages())
-         },400);
-         return loadMessages()
-      }),
-    )
+  sendMessage$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(sendMessage),
+        concatLatestFrom(() => [this.selectedChat$, this.authUserId$, of(new Date())]),
+        map(([action, selectedChat, authUserId, creationDate]) => {
+          const message = {
+            senderId: authUserId as string,
+            recipientId: selectedChat?.recipientId as string,
+            content: action.messageContent,
+            creationDate: creationDate,
+          };
+          this.rxStompService.publish({ destination: "/app/messages", body: JSON.stringify(message) });
+        }),
+      ),
+    { dispatch: false },
   );
 
   selectChat$ = createEffect(() =>
     this.actions$.pipe(
       ofType(selectChat),
-      filter(action => !!action.selectedChat),
+      filter((action) => !!action.selectedChat),
       map(() => {
-        return loadMessages()}),
+        this.store.dispatch(resetMessagesLimit());
+        return loadMessages();
+      }),
     ),
   );
 
+  incrementMessagesLimit$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(incrementMessagesLimit),
+      map(() => {
+        return loadMessages();
+      }),
+    ),
+  );
 
   constructor(
     private actions$: Actions,

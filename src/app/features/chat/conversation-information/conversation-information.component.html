@@ -1,0 +1,14 @@
+<a class="arrow-back" (click)="onArrowClick()">
+  <mat-icon>arrow_back_ios_new</mat-icon>
+</a>
+
+<div class="chat-list-header" fxLayout="column" fxFlex="center">
+  <div fxLayout fxLayoutAlign="center">
+    <img class="avatar-img" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="avatar" />
+  </div>
+  <div fxFlexAlign="center">
+    <p class="recipient-name" *ngIf="recipientUser$ | async as recipientUser">
+      {{ recipientUser.firstName }} {{ recipientUser.lastName }}
+    </p>
+  </div>
+</div>

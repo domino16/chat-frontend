@@ -27,6 +27,10 @@ $my-theme: mat.define-light-theme(
 
 /* You can add global styles to this file, and also import other style files */
 * {
+
+  padding: 0;
+  margin: 0;
+  
   ::-webkit-scrollbar {
     width: 20px;
   }
@@ -50,6 +54,7 @@ $my-theme: mat.define-light-theme(
 html {
   font-size: 62.5%;
   font-family: $font-family;
+  
 }
 
 body {
@@ -58,11 +63,4 @@ body {
   padding: 0;
 }
 
-app-root {
-  max-width: 1400px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  color: $white;
-}
+

@@ -65,9 +65,9 @@ mat-form-field {
   position: relative;
   width: 100%;
   height: 110px;
-  border-top: 1px solid $dark-color-lighter;
   font-size: 1.6rem;
   overflow: hidden;
+  border-radius: 10px;
 
   &__left {
     img {

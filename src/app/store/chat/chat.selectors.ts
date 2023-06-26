@@ -17,3 +17,7 @@ export const selectAllMessages = createSelector(selectMessageState, fromChat.sel
 
 export const isChatsLoaded = createSelector(getChatState, (state)=> state.chats.allChatsLoaded)
 export const isMessagesLoaded = createSelector(getChatState, (state)=> state.messages.allMessagesLoaded)
+export const isMoreMesssageLoading = createSelector(getChatState, (state)=> state.messages.isLoadingMoreMessages)
+
+
+export const selectMessagesLimit = createSelector(getChatState, (state)=> state.messages.messagesLimit)

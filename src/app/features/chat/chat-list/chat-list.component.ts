@@ -7,6 +7,7 @@ import { Chat } from "src/app/core/interfaces/chat";
 import { User } from "src/app/core/interfaces/user";
 import { ChatService } from "src/app/core/services/chat.service";
 import { UserService } from "src/app/core/services/user.service";
+import { authUser } from "src/app/store/auth/auth.selectors";
 import { selectChat } from "src/app/store/chat/chat.actions";
 import { isChatsLoaded, selectAllChats } from "src/app/store/chat/chat.selectors";
 
@@ -37,7 +38,9 @@ export class ChatListComponent {
 
 
   // take list of chats
-  userChats$: Observable<Chat[]> = this.store.select(selectAllChats);
+  userChats$ = this.store.select(selectAllChats);
+
+  authUser$ = this.store.select(authUser) as Observable<User>;
 
   constructor(private userService: UserService, private chatService: ChatService, private store: Store) {}
 

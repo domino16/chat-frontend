@@ -1,4 +1,4 @@
-import {RxStomp, RxStompConfig } from "@stomp/rx-stomp";
+import {RxStompConfig } from "@stomp/rx-stomp";
 
 export const rxStompConfig: RxStompConfig = {
   // Which server?

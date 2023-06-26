@@ -13,6 +13,7 @@ export class ChatComponent implements OnInit {
   isOpenChat:Observable<boolean> = this.store.select(isSelectedChat);
   isMobile = false;
   topicSubscription!: Subscription;
+  isOpenConversationInformation = false;
 
   constructor( private store: Store, private authService: AuthService){}
 
@@ -22,6 +23,13 @@ export class ChatComponent implements OnInit {
 
   @HostListener("window:resize", ["$event"])
   onResize() {
-    window.innerWidth < 960 ? this.isMobile = true : this.isMobile = false;
+    if(window.innerWidth < 960){
+      this.isMobile = true;
+      this.isOpenConversationInformation = false;
+    }else this.isMobile = false;
   }
+
+  visibilityToggle() {
+  this.isOpenConversationInformation = !this.isOpenConversationInformation
+}
 }

@@ -2,7 +2,7 @@
   <div fxFlex="0 0 90px" fxLayout fxLayoutAlign="end">
     <img fxFlexAlign="center" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="avatar" />
   </div>
-  <div fxFlex="1 1" fxLayout="column" fxFlexAlign="center"><p>Dominik Pietrzyk</p></div>
+  <div  fxFlex="1 1" fxLayout="column" fxFlexAlign="center"><p>{{(authUser$ | async)?.firstName}} {{(authUser$ | async)?.lastName}}</p></div>
 </div>
 <div class="chat-list-wrapper" (scroll)="onScroll($event)">
   <mat-form-field appearance="outline">
