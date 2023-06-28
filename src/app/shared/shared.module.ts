@@ -11,9 +11,11 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "../app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { DeleteButtonComponent } from './components/delete-button/delete-button.component';
+import { DateFormatPipe } from './pipes/date-format.pipe';
 
 @NgModule({
-  declarations: [HeaderComponent, SidenavComponent, FooterComponent, LoadingSpinnerComponent],
+  declarations: [HeaderComponent, SidenavComponent, FooterComponent, LoadingSpinnerComponent, DeleteButtonComponent, DateFormatPipe],
   imports: [
     CommonModule,
     FlexLayoutModule,
@@ -39,6 +41,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    DeleteButtonComponent,
+    DateFormatPipe
   ],
 })
 export class SharedModule {}

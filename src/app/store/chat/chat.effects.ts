@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, concatLatestFrom, createEffect, ofType } from "@ngrx/effects";
-import { concatMap, exhaustMap, filter, map, switchMap } from "rxjs/operators";
+import { exhaustMap, filter, map, switchMap } from "rxjs/operators";
 import { ChatService } from "src/app/core/services/chat.service";
 import {
   loadChats,

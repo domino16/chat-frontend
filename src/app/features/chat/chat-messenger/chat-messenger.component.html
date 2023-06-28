@@ -20,25 +20,40 @@
 
     <!-- #################### section messages ##########################################-->
     <div fxFlex="1 1" class="chat-messenger__messages" (scroll)="onScroll($event)">
-      <ng-container *ngFor="let message of messages | async">
+      <!-- <ng-container *ngFor="let message of messages | async;  let i=index"> -->
+      <label fxLayout="column" *ngFor="let message of messages | async">
+        <input type="radio" name="message" [value]="message.id" />
+        <span class="message-date">{{ message.creationDate }}</span>
+
+        <!-- #################### messages received ####################  -->
         <ng-container *ngIf="chat.recipientId !== message.recipientId">
           <div class="bubble-divider"></div>
           <div fxLayout fxLayoutAlign="start end">
             <img class="img-avatar-beside-message" src="../../../assets/attractive-g1a110e6c7_640.jpg" alt="avatar" />
-            <div (click)="onMessageBubleClick()" class="message-bubble message-bubble--left">
+            <div class="message-bubble message-bubble--left">
               {{ message.content }}
             </div>
           </div>
+          <span class="message-status message-status--left">{{ message.messageStatus?.toLowerCase() }}</span>
         </ng-container>
+
+        <!-- #################### messages sent ####################  -->
         <ng-container *ngIf="chat.recipientId === message.recipientId">
           <div class="bubble-divider"></div>
-          <div (click)="onMessageBubleClick()" class="message-bubble message-bubble--right">
-            {{ message.content }}
-          </div>
+            <div class="message-bubble message-bubble--right">
+              {{ message.content }}
+              <app-delete-button (click)="deleteMessage(message.id!)"></app-delete-button>
+            </div>
+          <span class="message-status message-status--right">{{ message.messageStatus?.toLowerCase() }}</span>
         </ng-container>
-      </ng-container>
-        <p class="text-on-messages-top" *ngIf="(isMoreMessagesLoading | async) === false">All messages loaded</p>
-        <app-loading-spinner *ngIf="isMoreMessagesLoading | async" class="loading-more-message-loading-spinner"></app-loading-spinner>
+      </label>
+
+      <!-- spinner and "All message Loaded" information on top of messages box  -->
+      <p class="text-on-messages-top" *ngIf="(isMoreMessagesLoading | async) === false">All messages loaded</p>
+      <app-loading-spinner
+        *ngIf="isMoreMessagesLoading | async"
+        class="loading-more-message-loading-spinner"
+      ></app-loading-spinner>
     </div>
 
     <!-- #################### send section #########################################-->

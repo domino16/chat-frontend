@@ -39,8 +39,10 @@
     overflow-y: scroll;
     border: 1px solid rgba($color: $primary-color, $alpha: 10%);
 
+
     .message-bubble {
-      display: block;
+      display: flex; 
+      align-items: center;
       max-width: 70%;
       padding: 8px 12px;
       text-align: left;
@@ -49,7 +51,8 @@
       border-radius: 20px;
       font-size: 1.5rem;
       cursor: pointer;
-
+      position: relative;
+     
       &--right {
         align-self: flex-end;
         background-color: $primary-color;
@@ -81,9 +84,49 @@
       max-height: 36px;
       font-size: 1.6rem;
       margin: 0 auto;
-      color: $dark-color-lighter;
+      color: $gray-color;
       margin: 0 auto;
+    }
 
+    .message-date {
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .message-status {
+
+      &--left {
+        align-self: flex-start;
+        margin-left: 60px;
+      }
+
+      &--right {
+        align-self: flex-end;
+        margin-right: 10px;
+      }
+    }
+
+    app-delete-button{
+      position: absolute;
+      left: -38px;
+      transform: scale(.6);
+    }
+
+    .message-date,
+    .message-status,
+    app-delete-button{
+      color: $gray-color;
+      display: none;
+    }
+
+    label input[type="radio"] {
+      display: none;
+
+      &:checked {
+       + .message-date, ~ .message-status, ~ app-delete-button,  ~ .message-bubble > app-delete-button {
+         display: block;
+        }
+      }
     }
   }
 
@@ -113,6 +156,7 @@
     }
   }
 }
+
 //################## LoadingSpinner #####################
 .message-box-loading-spinner {
   display: flex;

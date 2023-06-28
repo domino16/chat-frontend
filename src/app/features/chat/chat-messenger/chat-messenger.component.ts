@@ -5,7 +5,8 @@ import { Chat } from "src/app/core/interfaces/chat";
 import { getSelectedChat, isMessagesLoaded, isMoreMesssageLoading, selectAllMessages } from "src/app/store/chat/chat.selectors";
 import { Message } from "src/app/core/interfaces/message";
 import { FormControl } from "@angular/forms";
-import { incrementMessagesLimit, selectChat, sendMessage } from "src/app/store/chat/chat.actions";
+import { incrementMessagesLimit, loadMessages, selectChat, sendMessage } from "src/app/store/chat/chat.actions";
+import { ChatService } from "src/app/core/services/chat.service";
 
 @Component({
   selector: "app-chat-messenger",
@@ -22,7 +23,7 @@ export class ChatMessengerComponent  {
 //toggle open/close right box with user information
   @Output() toggle = new EventEmitter();
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private chatService: ChatService) {}
 
 // load more messages when user scroll messages box in 95% 
   onScroll(e: Event) {
@@ -49,5 +50,12 @@ export class ChatMessengerComponent  {
 
   onArrowClick(){
     this.store.dispatch(selectChat({selectedChat:null}))
+  }
+
+  deleteMessage(messageId:string){
+    console.log(messageId);
+    this.chatService.deleteMessage(messageId).subscribe(()=>{ setTimeout(() => {
+      this.store.dispatch(loadMessages())
+    }, 3000);})
   }
 }
