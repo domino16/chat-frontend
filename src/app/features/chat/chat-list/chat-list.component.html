@@ -29,7 +29,7 @@
         <span class="text-oveflow-ellipsis">{{chat.lastMessage}}</span>
       </div>
       <div class="box__right" fxFlex="0 0 50px" fxLayout="column" fxLayoutAlign="center center">
-        <span class="last-message-date">{{chat.lastMessageDate}}</span>
+        <span class="last-message-date">{{chat.lastMessageDate | dateFormat}}</span>
         <p class="last-message-notification">12</p>
       </div>
     </div>
