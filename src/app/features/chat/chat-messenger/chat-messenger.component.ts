@@ -1,5 +1,5 @@
 import {  Component, EventEmitter, Output} from "@angular/core";
-import { Observable} from "rxjs";
+import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import { Chat } from "src/app/core/interfaces/chat";
 import { getSelectedChat, isMessagesLoaded, isMoreMesssageLoading, selectAllMessages } from "src/app/store/chat/chat.selectors";
@@ -7,6 +7,7 @@ import { Message } from "src/app/core/interfaces/message";
 import { FormControl } from "@angular/forms";
 import { incrementMessagesLimit, loadMessages, selectChat, sendMessage } from "src/app/store/chat/chat.actions";
 import { ChatService } from "src/app/core/services/chat.service";
+import { RxStompService } from "src/app/core/services/rx-stomp.service";
 
 @Component({
   selector: "app-chat-messenger",
@@ -15,15 +16,15 @@ import { ChatService } from "src/app/core/services/chat.service";
 })
 export class ChatMessengerComponent  {
   sendMessageControl = new FormControl('');
-  selectedChat:Observable<Chat | null> = this.store.select(getSelectedChat);
-  messages:Observable<Message[]> = this.store.select(selectAllMessages);
-  isMessagesLoaded:Observable<boolean> = this.store.select(isMessagesLoaded);
-  isMoreMessagesLoading:Observable<boolean> = this.store.select(isMoreMesssageLoading)
+  selectedChat$:Observable<Chat | null> = this.store.select(getSelectedChat);
+  messages$:Observable<Message[]> = this.store.select(selectAllMessages);
+  isMessagesLoaded$:Observable<boolean> = this.store.select(isMessagesLoaded);
+  isMoreMessagesLoading$:Observable<boolean> = this.store.select(isMoreMesssageLoading)
 
 //toggle open/close right box with user information
   @Output() toggle = new EventEmitter();
 
-  constructor(private store: Store, private chatService: ChatService) {}
+  constructor(private store: Store, private chatService: ChatService,private rxStompService: RxStompService) {}
 
 // load more messages when user scroll messages box in 95% 
   onScroll(e: Event) {
@@ -58,4 +59,5 @@ export class ChatMessengerComponent  {
       this.store.dispatch(loadMessages())
     }, 3000);})
   }
+
 }

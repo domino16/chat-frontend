@@ -5,4 +5,5 @@ export interface Chat{
   lastMessage: string;
   lastMessageDate: Date;
   lastMessageUser: string;
+  notificationNumber: number;
 }

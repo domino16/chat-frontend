@@ -1,8 +1,9 @@
 import { Component, HostListener, OnInit } from "@angular/core";
 import { Observable, Subscription } from "rxjs";
 import { Store } from "@ngrx/store";
-import { AuthService } from "src/app/core/services/auth.service";
+
 import { isSelectedChat } from "src/app/store/chat/chat.selectors";
+import { ChatService } from "src/app/core/services/chat.service";
 
 @Component({
   selector: "app-chat",
@@ -15,7 +16,7 @@ export class ChatComponent implements OnInit {
   topicSubscription!: Subscription;
   isOpenConversationInformation = false;
 
-  constructor( private store: Store, private authService: AuthService){}
+  constructor( private store: Store,private chatService: ChatService){}
 
   ngOnInit(): void {
     this.onResize();  
@@ -32,4 +33,10 @@ export class ChatComponent implements OnInit {
   visibilityToggle() {
   this.isOpenConversationInformation = !this.isOpenConversationInformation
 }
+
+
+sendFrameToRecipientUser(){
+  this.chatService.sendFrameToRecipientUser()
+}
+
 }

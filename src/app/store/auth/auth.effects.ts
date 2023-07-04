@@ -45,10 +45,10 @@ export class AuthEffects {
       ofType(loginSuccess),
       switchMap((action)=>{
         this.router.navigate(["/chat"]);
-        this.store.dispatch(loadChats({userEmail:action.authUser.email}));
+        this.store.dispatch(loadChats());
         return this.rxStompService.watch(`/user/${action.authUser.email}/queue/messages`)
         .pipe(map(()=> {
-          this.store.dispatch(loadChats({userEmail:action.authUser.email}))
+          this.store.dispatch(loadChats())
           return loadMessages()
         }))
       })

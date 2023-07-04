@@ -2,7 +2,7 @@ import { createAction, props } from "@ngrx/store";
 import { Chat } from "src/app/core/interfaces/chat";
 import { Message } from "src/app/core/interfaces/message";
 
-export const loadChats = createAction("[Chat/API] Load Chats", props<{userEmail:string}>());
+export const loadChats = createAction("[Chat/API] Load Chats");
 
 export const allChatsLoaded = createAction("[[Chat/API]] All Chats Loaded", props<{ chats: Chat[] }>());
 

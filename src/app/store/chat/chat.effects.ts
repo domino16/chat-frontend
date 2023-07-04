@@ -28,7 +28,8 @@ export class ChatEffects {
   loadChats$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadChats),
-      switchMap((action) => this.chatService.getChats(action.userEmail)),
+      concatLatestFrom(() => this.authUserId$),
+      switchMap(([, authUserId]) => this.chatService.getChats(authUserId as string)),
       map((chats) => allChatsLoaded({ chats })),
     ),
   );
@@ -37,10 +38,12 @@ export class ChatEffects {
     this.actions$.pipe(
       ofType(loadMessages),
       concatLatestFrom(() => [this.authUserId$, this.selectedChat$, this.messagesLimit$]),
-      exhaustMap(([, authUserId, selectedChat, messagesLimit]) =>
-        this.chatService.getMessages(authUserId as string, selectedChat?.recipientId as string, messagesLimit),
-      ),
+      filter(([, authUserId, selectedChat, messagesLimit]) => !!authUserId && !!selectedChat && !!messagesLimit),
+      exhaustMap(([, authUserId, selectedChat, messagesLimit]) => {
+        return this.chatService.getMessages(authUserId as string, selectedChat?.recipientId as string, messagesLimit);
+      }),
       map((messages) => {
+        this.store.dispatch(loadChats());
         return allMessagesLoaded({ messages });
       }),
     ),

@@ -1,9 +1,9 @@
-<ng-container *ngIf="selectedChat | async as chat">
+<ng-container  *ngIf="selectedChat$ | async as chat">
   <app-loading-spinner
     class="message-box-loading-spinner"
-    *ngIf="(isMessagesLoaded | async) === false"
+    *ngIf="(isMessagesLoaded$ | async) === false"
   ></app-loading-spinner>
-  <ng-container *ngIf="(isMessagesLoaded | async) === true">
+  <ng-container *ngIf="(isMessagesLoaded$ | async) === true">
     <!-- ####################  section header ##########################################-->
     <div fxFlex="0 0 80px" fxLayout class="chat-messenger__header">
       <a fxLayoutAlign="center center" fxLayout (click)="onArrowClick()">
@@ -22,7 +22,7 @@
     <div fxFlex="1 1" class="chat-messenger__messages" (scroll)="onScroll($event)">
       <!-- <ng-container *ngFor="let message of messages | async;  let i=index"> -->
       <div class="bubble-divider"></div>
-      <label fxLayout="column" *ngFor="let message of messages | async">
+      <label fxLayout="column" *ngFor="let message of messages$ | async">
         <input type="radio" name="message" [value]="message.id" />
         <span class="message-date">{{ message.creationDate! | dateFormat }}</span>
 
@@ -35,7 +35,7 @@
               {{ message.content }}
             </div>
           </div>
-          <span class="message-status message-status--left">{{ message.messageStatus?.toLowerCase() }}</span>
+          <span class="message-status message-status--left">viewed</span>
         </ng-container>
 
         <!-- #################### messages sent ####################  -->
@@ -50,9 +50,9 @@
       </label>
 
       <!-- spinner and "All message Loaded" information on top of messages box  -->
-      <p class="text-on-messages-top" *ngIf="(isMoreMessagesLoading | async) === false">All messages loaded</p>
+      <p class="text-on-messages-top" *ngIf="(isMoreMessagesLoading$ | async) === false">All messages loaded</p>
       <app-loading-spinner
-        *ngIf="isMoreMessagesLoading | async"
+        *ngIf="isMoreMessagesLoading$ | async"
         class="loading-more-message-loading-spinner"
       ></app-loading-spinner>
     </div>
