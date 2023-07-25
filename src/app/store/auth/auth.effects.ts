@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, exhaustMap, map, of, switchMap,  } from "rxjs";
-import { loginFailure, loginStart, loginSuccess, signupFailure, signupStart, signupSuccess } from "./auth.actions";
+import { loginFailure, loginStart, loginSuccess, signupFailure, signupStart } from "./auth.actions";
 import { AuthService } from "src/app/core/services/auth.service";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
@@ -31,14 +31,14 @@ export class AuthEffects {
       ofType(signupStart),
       exhaustMap((action) => {
         return this.authService.signUp(action.newUser).pipe(
-          map((user) => signupSuccess({ authUser: user })),
+          map((accessToken) => this.authService.handleAuth(accessToken.token)),
           catchError((error) => {
             return of(signupFailure({ error: error.error.message }));
           }),
         );
       }),
     );
-  });
+  },{dispatch:false});
 
   loginSucess$ = createEffect(() => {
     return this.actions$.pipe(

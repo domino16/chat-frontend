@@ -1,7 +1,6 @@
-import { Component, HostListener, OnInit } from "@angular/core";
+import { Component, EventEmitter, HostListener, OnInit, Output } from "@angular/core";
 import { Observable, Subscription } from "rxjs";
 import { Store } from "@ngrx/store";
-
 import { isSelectedChat } from "src/app/store/chat/chat.selectors";
 import { ChatService } from "src/app/core/services/chat.service";
 
@@ -15,6 +14,9 @@ export class ChatComponent implements OnInit {
   isMobile = false;
   topicSubscription!: Subscription;
   isOpenConversationInformation = false;
+
+  isOpenPopup = false;
+  @Output() popupToggle: EventEmitter<boolean> = new EventEmitter();
 
   constructor( private store: Store,private chatService: ChatService){}
 
@@ -30,8 +32,12 @@ export class ChatComponent implements OnInit {
     }else this.isMobile = false;
   }
 
-  visibilityToggle() {
+  visibilityConversationInformationBoxToggle() {
   this.isOpenConversationInformation = !this.isOpenConversationInformation
+}
+
+visibilityPoupToggle() {
+  this.isOpenPopup = !this.isOpenPopup
 }
 
 

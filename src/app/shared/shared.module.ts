@@ -13,9 +13,10 @@ import { HttpClientModule } from "@angular/common/http";
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { DeleteButtonComponent } from './components/delete-button/delete-button.component';
 import { DateFormatPipe } from './pipes/date-format.pipe';
+import { ProfilePopupComponent } from './components/profile-popup/profile-popup.component';
 
 @NgModule({
-  declarations: [HeaderComponent, SidenavComponent, FooterComponent, LoadingSpinnerComponent, DeleteButtonComponent, DateFormatPipe],
+  declarations: [HeaderComponent, SidenavComponent, FooterComponent, LoadingSpinnerComponent, DeleteButtonComponent, DateFormatPipe, ProfilePopupComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,
@@ -42,7 +43,8 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
     AppRoutingModule,
     HttpClientModule,
     DeleteButtonComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    ProfilePopupComponent
   ],
 })
 export class SharedModule {}

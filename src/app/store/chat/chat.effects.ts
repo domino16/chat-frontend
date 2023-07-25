@@ -72,7 +72,7 @@ export class ChatEffects {
       ofType(selectChat),
       filter((action) => !!action.selectedChat),
       map(() => {
-        this.store.dispatch(resetMessagesLimit());
+        this.store.dispatch(resetMessagesLimit())
         return loadMessages();
       }),
     ),

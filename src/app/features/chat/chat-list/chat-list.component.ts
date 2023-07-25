@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Store } from "@ngrx/store";
@@ -9,7 +9,7 @@ import { ChatService } from "src/app/core/services/chat.service";
 import { UserService } from "src/app/core/services/user.service";
 import { authUser } from "src/app/store/auth/auth.selectors";
 import { selectChat } from "src/app/store/chat/chat.actions";
-import { isChatsLoaded, selectAllChats } from "src/app/store/chat/chat.selectors";
+import { getSelectedChat, isChatsLoaded, selectAllChats } from "src/app/store/chat/chat.selectors";
 
 @Component({
   selector: "app-chat-list",
@@ -27,11 +27,17 @@ export class ChatListComponent {
 
   // users search control
   searchControl: FormControl = new FormControl("");
-  
+
+ @Output() popupOpen = new EventEmitter();
+
   // take list of chats
   userChats$ = this.store.select(selectAllChats);
 
   authUser$ = this.store.select(authUser) as Observable<User>;
+
+  selectedChat$ = this.store.select(getSelectedChat)
+
+
 
   // users displayed in search field
   filteredAllUsers$: Observable<User[]> = this.authUser$.pipe(switchMap((authUser: User) =>{
@@ -77,5 +83,9 @@ export class ChatListComponent {
 
   sendFrameToRecipientUser(){
     this.chatService.sendFrameToRecipientUser()
+  }
+
+  onOpenPopup(){
+    this.popupOpen.emit();
   }
 }

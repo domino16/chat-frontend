@@ -20,8 +20,8 @@ export class AuthService {
     })
   }
 
-  signUp(newUser: User): Observable<User> {
-    return this.http.post<User>("http://localhost:8080/auth/signup", newUser);
+  signUp(newUser: User): Observable<{token: string}> {
+    return this.http.post<{token:string}>("http://localhost:8080/auth/signup", newUser);
   }
 
 

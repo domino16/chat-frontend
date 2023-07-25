@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, first, noop, of, switchMap, take } from "rxjs";
+import { Observable, first, switchMap, take } from "rxjs";
 import { Chat } from "../interfaces/chat";
 import { Store } from "@ngrx/store";
 import { authUser } from "src/app/store/auth/auth.selectors";

@@ -38,6 +38,7 @@ export class SignupComponent {
       password,
       firstName,
       lastName,
+
     };
 
     this.store.dispatch(signupStart({ newUser: payload }));
