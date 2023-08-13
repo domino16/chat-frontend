@@ -11,8 +11,10 @@
     <!-- ######## signIn ######################### -->
 
     <form [formGroup]="loginForm" fxLayout="column" (submit)="logInClick()">
-      <!-- TODO: improve alert danger -->
-      <div class="alert-danger" style="color:red">{{errorMessage | async}}</div>
+      <div *ngIf="errorMessage | async" class="error-msg">
+        <mat-icon>highlight_off</mat-icon>
+        {{ errorMessage | async }}
+      </div>
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input type="email" matInput formControlName="emailFormControl" />
@@ -27,7 +29,7 @@
         <mat-label>Password</mat-label>
         <input type="password" matInput formControlName="passwordFormControl" />
       </mat-form-field>
-      <div fxLayout>
+      <div fxLayout fxLayoutAlign="start center">
         <button mat-fab extended>Log In</button>
         <p>Forgotten your password?</p>
       </div>

@@ -1,7 +1,7 @@
 <div class="chat-list-header" [ngClass]="{ 'divider-line': showLine }">
   <mat-icon (click)="onOpenPopup()">account_circle</mat-icon>
   <div fxFlex="0 0 90px" fxLayout fxLayoutAlign="end">
-    <img fxFlexAlign="center" [src]="(authUser$ | async)?.avatarImg" alt="avatar" />
+    <img fxFlexAlign="center" [src]="(authUser$ | async)?.avatarImg" alt="avatar" data-cache="no-cache" />
   </div>
   <div fxFlex="1 1" fxLayout="column" fxFlexAlign="center">
     <p>{{ (authUser$ | async)?.firstName }} {{ (authUser$ | async)?.lastName }}</p>

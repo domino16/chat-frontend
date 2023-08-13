@@ -20,7 +20,9 @@ export class AuthEffects {
         return this.authService.getAuth(action.email, action.password).pipe(
           map((accessToken) => {
               this.authService.handleAuth(accessToken.token)}),
-          catchError((error) => of(loginFailure({ error: error.error.message }))),
+          catchError((error) => {
+            return of(this.store.dispatch(loginFailure({error:error.error})))
+            }),
         );
       }),
     );
@@ -33,7 +35,7 @@ export class AuthEffects {
         return this.authService.signUp(action.newUser).pipe(
           map((accessToken) => this.authService.handleAuth(accessToken.token)),
           catchError((error) => {
-            return of(signupFailure({ error: error.error.message }));
+            return of(this.store.dispatch(signupFailure({error:error.error})))
           }),
         );
       }),

@@ -1,4 +1,4 @@
-import { User} from "src/app/core/interfaces/user";
+import { User } from "src/app/core/interfaces/user";
 import { createReducer, on } from "@ngrx/store";
 import { loginFailure, loginSuccess, signupFailure} from "./auth.actions";
 
@@ -14,7 +14,8 @@ export const initialAuthState: authState = {
 
 export const authReducer = createReducer(
   initialAuthState,
-  on(loginSuccess, (state, action) => ({ ...state, user: action.authUser })),
+  on(loginSuccess, (state, action) => ( { ...state, user: action.authUser})),
   on(loginFailure, (state, action) => ({ ...state, errorMessage: action.error })),
   on(signupFailure, (state, action) => ({ ...state, errorMessage: action.error })),
+  // on(updateUser, (state, action) => ({ ...state, user:{...action.user, avatarImg: action.user.avatarImg + "?v=" + Date.now()} })),
 );

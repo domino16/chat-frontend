@@ -1,40 +1,95 @@
-<div class="popup">
-    <mat-icon (click)="onClose()">close</mat-icon>
-    <div class="row">
-        <div class="col-8">
-          <label class="btn btn-default p-0">
-            <input type="file" (change)="selectFile($event)" />
-          </label>
-        </div>
-      
-        <div class="col-4">
-          <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
-            Upload
-          </button>
-        </div>
+<div class="popup" *ngIf="authUser$ | async as authUser">
+  <mat-icon class="close-icon" (click)="onClose()">close</mat-icon>
+  <div fxLayout fxLayoutAlign="center">
+    <img class="avatar-img" src="{{authUser.avatarImg}}"  alt="avatar" />
+  </div>
+
+
+
+  <!-- <div *ngIf="currentFile">
+    <div
+      role="progressbar"
+      attr.aria-valuenow="{{ progress }}"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      [ngStyle]="{ width: progress + '%' }"
+    >
+      {{ progress }}%
+    </div>
+  </div> -->
+
+  <div *ngIf="errorMessage" class="error-msg">
+    <mat-icon>highlight_off</mat-icon>
+    {{ errorMessage}}
+  </div>
+  <ng-container *ngIf="!isEditMode">
+    <ul fxFlexAlign="start">
+      <li>
+        <span class="list-item-name">first name:</span>
+        <span class="list-item-text">{{ authUser.firstName }}</span>
+      </li>
+      <li>
+        <span class="list-item-name">last name:</span>
+        <span class="list-item-text">{{ authUser.lastName }}</span>
+      </li>
+      <li>
+        <span class="list-item-name">password:</span>
+        <span class="list-item-text">*********</span>
+      </li>
+      <li>
+        <span class="list-item-name">email:</span>
+        <span class="list-item-text">{{ authUser.email }}</span>
+      </li>
+    </ul>
+    <div fxLayout fxFlexAlign="center">
+      <button mat-fab extended (click)="isEditMode = !isEditMode">edit</button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isEditMode">  <div fxLayout fxFlexAlign="center">
+      <label>
+        <input type="file" (change)="selectFile($event)" />
+      </label>
+    <!-- <button mat-fab extended [disabled]="!selectedFiles" (click)="upload(authUser.email)">save</button> -->
+  </div>
+    <form [formGroup]="editForm" fxLayout="column" fxFlexAlign="center" (submit)="editProfile()">
+      <ul>
+        <li>
+          <label class="list-item-name">first name:</label>
+          <input
+            type="text"
+            (input)="isChanged = true"
+            class="list-item-input"
+            formControlName="firstName"
+
+            
+          />
+        </li>
+        <li>
+          <label class="list-item-name">last name:</label>
+          <input
+            type="text"
+            (input)="isChanged = true"
+            class="list-item-input"
+            formControlName="lastName"
+          />
+        </li>
+        <li>
+          <label class="list-item-name">password</label>
+          <input class="list-item-input" placeholder="enter old password" formControlName="oldPassword" />
+          <input
+            type="text"
+            (input)="isChanged = true"
+            class="list-item-input"
+            placeholder="enter new password"
+            formControlName="newPassword"
+          />
+        </li>
+      </ul>
+      <div fxLayout fxFlexAlign="center">
+        <button [disabled]="!isChanged" mat-fab extended >
+          save
+        </button>
       </div>
-      
-      <div *ngIf="currentFile" class="progress my-3">
-        <div
-          class="progress-bar progress-bar-info progress-bar-striped"
-          role="progressbar"
-          attr.aria-valuenow="{{ progress }}"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          [ngStyle]="{ width: progress + '%' }"
-        >
-          {{ progress }}%
-        </div>
-      </div>
-      
-      <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
-      
-      <div class="card mt-3">
-        <div class="card-header">List of Files</div>
-        <ul class="list-group list-group-flush">
-          <li *ngFor="let file of fileInfos | async" class="list-group-item">
-            <a href="{{ file.url }}">{{ file.name }}</a>
-          </li>
-        </ul>
-      </div>
+    </form>
+  </ng-container>
 </div>

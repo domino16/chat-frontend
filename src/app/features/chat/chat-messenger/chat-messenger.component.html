@@ -30,7 +30,7 @@
         <ng-container *ngIf="chat.recipientId !== message.recipientId">
           <div class="bubble-divider"></div>
           <div fxLayout fxLayoutAlign="start end">
-            <img class="img-avatar-beside-message" src="http://localhost:8080/users/files/{{message.recipientId}}" alt="avatar" />
+            <img class="img-avatar-beside-message" src="http://localhost:8080/users/files/{{message.senderId}}" alt="avatar" />
             <div class="message-bubble message-bubble--left">
               {{ message.content }}
             </div>

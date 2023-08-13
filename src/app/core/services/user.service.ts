@@ -1,7 +1,8 @@
-import { HttpClient, HttpEvent, HttpRequest } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { User} from "../interfaces/user";
 import { Observable} from "rxjs";
+import { editRequest } from "src/app/shared/components/profile-popup/profile-popup.component";
 
 @Injectable({
   providedIn: "root",
@@ -21,19 +22,9 @@ export class UserService {
     return this.http.get<User>(`http://localhost:8080/users/user/${email}`)
   }
 
-  updateImg(file: File): Observable<HttpEvent<any>> {
-    const formData: FormData = new FormData();
+  editProfile(editReq:editRequest): Observable<{token: string}> {
 
-    formData.append('file', file);
-
-    
-
-    const req = new HttpRequest('POST', `http://localhost:8080/users/update`, formData, {
-      reportProgress: true,
-      responseType: 'json',
-    });
-
-    return this.http.request(req);
+    return this.http.post<{token: string}>("http://localhost:8080/users/user/edit", editReq)
   }
 
 

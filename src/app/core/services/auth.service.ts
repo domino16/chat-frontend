@@ -28,7 +28,6 @@ export class AuthService {
   handleAuth(accessToken:string):void {
     localStorage.setItem('accessToken', accessToken);
     const authUser:User = jwtDecode(accessToken);
-
     const timestamp:number = new Date().getTime()
     const tokenExpirationTimestamp = (authUser.exp as number)*1000
 
@@ -36,7 +35,6 @@ export class AuthService {
       this.logout()
       return
     }
-  
    this.store.dispatch(loginSuccess({ authUser }));
    this.autoLogout(tokenExpirationTimestamp - timestamp)
   }

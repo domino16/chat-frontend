@@ -1,30 +1,21 @@
-import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient} from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class FileUploadService {
-    private baseUrl = 'http://localhost:8080';
-  
-    constructor(private http: HttpClient) { }
-  
-    upload(file: File): Observable<HttpEvent<any>> {
-      const formData: FormData = new FormData();
-  
-      formData.append('file', file);
-      formData.append('userId', 'razdwatrzythi');
+  private baseUrl = "http://localhost:8080";
 
-      const req = new HttpRequest('POST', `${this.baseUrl}/users/user/update`, formData, {
-        reportProgress: true,
-        responseType: 'json'
-      });
-  
-      return this.http.request(req);
-    }
-  
-    // getFiles(): Observable<any> {
-    //   return this.http.get(`${this.baseUrl}/users/user/files`);
-    // }
+  constructor(private http: HttpClient, private store: Store) {}
+
+  upload(file: File, currentUserId: string): Observable<{ token: string }> | undefined {
+    const formData: FormData = new FormData();
+    formData.append("userId", currentUserId);
+    formData.append("file", file);
+    return this.http.post<{ token: string }>(`${this.baseUrl}/users/user/update`, formData, { reportProgress: true });
+  }
 }

@@ -11,4 +11,4 @@ export const signupStart = createAction("[AUTH PAGE] Sign up start", props<{ new
 
 export const signupFailure = createAction("[AUTH PAGE] Sign up failure", props<{ error: string }>());
 
-// export const signupSuccess = createAction("[AUTH PAGE] Sign Up success", props<{ authUser: User }>());
+

@@ -1,9 +1,10 @@
 <img routerLink="/" src="../../../assets/logo-gef167d036_640.png" alt="logo" />
 <h1>SendM</h1>
-
 <form [formGroup]="signupForm" fxLayout="column" fxFlexAlign="center" (submit)="logInClick()">
-        <!-- TODO: improve alert danger -->
-        <div class="alert-danger" style="color:red">{{errorMessage | async}}</div>
+  <div *ngIf="errorMessage | async" class="error-msg">
+    <mat-icon>highlight_off</mat-icon>
+    {{ errorMessage | async }}
+  </div>
   <mat-form-field appearance="outline">
     <mat-label>First name</mat-label>
     <input type="text" matInput formControlName="firstName" />
@@ -35,13 +36,14 @@
         <polyline points="1 9 7 14 15 4"></polyline>
       </svg>
       <span>
-        I agree to the <a href="/">terms</a>
+        I agree to the
+        <a href="/">terms</a>
       </span>
     </label>
   </div>
   <div fxLayout fxFlexAlign="center">
     <button mat-fab extended>Sign Up</button>
-    <p routerLink="/">or sign in</p>
+    <p fxFlexAlign="center" routerLink="/">or sign in</p>
   </div>
 </form>
 <app-footer></app-footer>

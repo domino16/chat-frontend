@@ -7,6 +7,11 @@
   flex-direction: column;
   text-align: center;
   margin-top: 70px;
+  color: $white;
+}
+
+h1{
+  margin: 5px 0 10px;
 }
 
 img {
@@ -28,6 +33,24 @@ p {
   text-decoration: underline;
   margin-left: 1em;
   cursor: pointer;
+}
+
+.error-msg {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 20px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: #f74646;
+  text-align: left;
+  font-size: 1.6rem;
+
+  mat-icon{
+display: flex;
+align-items: center;
+justify-content: center;
+    font-size: 20px;
+  }
 }
 
 input {

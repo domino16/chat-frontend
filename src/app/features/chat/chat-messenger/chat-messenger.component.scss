@@ -66,9 +66,9 @@
     }
 
     .img-avatar-beside-message {
-      padding: 0 8px 0 14px;
-      width: 3em;
-      height: 3em;
+      margin: 0 8px 0 14px;
+      width: 3.5em;
+      height: 3.5em;
       object-fit: cover;
       border-radius: 50%;
     }
@@ -94,7 +94,6 @@
     }
 
     .message-status {
-
       &--left {
         align-self: flex-start;
         margin-left: 63px;
