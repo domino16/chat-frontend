@@ -9,6 +9,5 @@ export const loginSuccess = createAction("[AUTH PAGE] Login success", props<{ au
 
 export const signupStart = createAction("[AUTH PAGE] Sign up start", props<{ newUser: User }>());
 
-export const signupFailure = createAction("[AUTH PAGE] Sign up failure", props<{ error: string }>());
 
 

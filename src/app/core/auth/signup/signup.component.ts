@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Validation } from "./repeat-password-validation";
 import { User } from "../../interfaces/user";
 import { Store } from "@ngrx/store";
-import { signupStart } from "src/app/store/auth/auth.actions";
+import { loginFailure, signupStart } from "src/app/store/auth/auth.actions";
 import { errorMessage } from "src/app/store/auth/auth.selectors";
 
 @Component({
@@ -11,7 +11,7 @@ import { errorMessage } from "src/app/store/auth/auth.selectors";
   templateUrl: "./signup.component.html",
   styleUrls: ["./signup.component.scss"],
 })
-export class SignupComponent {
+export class SignupComponent implements OnDestroy{
   errorMessage = this.store.select(errorMessage);
 
   constructor(private store: Store) {}
@@ -42,5 +42,9 @@ export class SignupComponent {
     };
 
     this.store.dispatch(signupStart({ newUser: payload }));
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(loginFailure({error:""}))
   }
 }

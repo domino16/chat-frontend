@@ -1,5 +1,6 @@
 <div class="chat-list-header" [ngClass]="{ 'divider-line': showLine }">
-  <mat-icon (click)="onOpenPopup()">account_circle</mat-icon>
+  <mat-icon class="profile-icon" (click)="onOpenPopup()">account_circle</mat-icon>
+  <mat-icon class="logout-icon" (click)="logout()">logout</mat-icon>
   <div fxFlex="0 0 90px" fxLayout fxLayoutAlign="end">
     <img fxFlexAlign="center" [src]="(authUser$ | async)?.avatarImg" alt="avatar" data-cache="no-cache" />
   </div>

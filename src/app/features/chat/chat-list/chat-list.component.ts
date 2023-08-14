@@ -5,6 +5,7 @@ import { Store } from "@ngrx/store";
 import { Observable, debounceTime, first, map, switchMap, tap } from "rxjs";
 import { Chat } from "src/app/core/interfaces/chat";
 import { User } from "src/app/core/interfaces/user";
+import { AuthService } from "src/app/core/services/auth.service";
 import { ChatService } from "src/app/core/services/chat.service";
 import { UserService } from "src/app/core/services/user.service";
 import { authUser } from "src/app/store/auth/auth.selectors";
@@ -36,8 +37,7 @@ export class ChatListComponent {
   authUser$ = this.store.select(authUser) as Observable<User>;
 
   selectedChat$ = this.store.select(getSelectedChat)
-
-
+  
 
   // users displayed in search field
   filteredAllUsers$: Observable<User[]> = this.authUser$.pipe(switchMap((authUser: User) =>{
@@ -58,7 +58,7 @@ export class ChatListComponent {
 
 
 
-  constructor(private userService: UserService, private chatService: ChatService, private store: Store) {}
+  constructor(private userService: UserService, private chatService: ChatService, private store: Store, private authService:AuthService) {}
 
   onChatSelectChange(chat: Chat) {
     this.store.dispatch(selectChat({ selectedChat: chat }));
@@ -87,5 +87,9 @@ export class ChatListComponent {
 
   onOpenPopup(){
     this.popupOpen.emit();
+  }
+
+  logout(){
+    this.authService.logout()
   }
 }

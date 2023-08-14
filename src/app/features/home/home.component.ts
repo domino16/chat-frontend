@@ -1,7 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
-import { loginStart} from "src/app/store/auth/auth.actions";
+import { loginFailure, loginStart} from "src/app/store/auth/auth.actions";
 import { errorMessage } from "src/app/store/auth/auth.selectors";
 
 
@@ -10,7 +10,7 @@ import { errorMessage } from "src/app/store/auth/auth.selectors";
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
 })
-export class HomeComponent {
+export class HomeComponent implements OnDestroy {
 
   errorMessage = this.store.select(errorMessage)
   
@@ -27,5 +27,9 @@ export class HomeComponent {
     const email: string = this.loginForm.controls["emailFormControl"].value;
     const password: string = this.loginForm.controls["passwordFormControl"].value;
     this.store.dispatch(loginStart({email, password}));
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(loginFailure({error:""}))
   }
 }
