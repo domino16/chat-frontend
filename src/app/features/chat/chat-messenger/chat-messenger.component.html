@@ -5,16 +5,16 @@
   ></app-loading-spinner>
   <ng-container *ngIf="(isMessagesLoaded$ | async) === true">
     <!-- ####################  section header ##########################################-->
-    <div fxFlex="0 0 80px" fxLayout class="chat-messenger__header">
-      <a fxLayoutAlign="center center" fxLayout (click)="onArrowClick()">
-        <mat-icon fxLayoutAlign="center" fxFlex="0 0 45px">arrow_back_ios_new</mat-icon>
+    <div fxFlex="0 0 80px" class="chat-messenger__header">
+      <a fxLayoutAlign="center center" fxFlex="0 0 45px"(click)="onArrowClick()">
+        <mat-icon  >arrow_back_ios_new</mat-icon>
       </a>
       <div fxFlex="1 1" fxLayoutAlign="center center">
         <img src="http://localhost:8080/users/files/{{chat.recipientId}}" alt="logo" />
         <span>{{ chat.recipientName }}</span>
       </div>
-      <a fxLayoutAlign="center center" (click)="onThreeDotClick()">
-        <mat-icon fxLayoutAlign="center" fxFlex="0 0 45px">more_vert</mat-icon>
+      <a fxLayoutAlign="center center" fxFlex="0 0 45px" (click)="onThreeDotClick()">
+        <mat-icon >more_vert</mat-icon>
       </a>
     </div>
 
@@ -58,7 +58,7 @@
     </div>
 
     <!-- #################### send section #########################################-->
-    <div fxFlex="0 0 60px" fxLayout="" class="chat-messenger__sender">
+    <div fxFlex="0 0 60px" class="chat-messenger__sender">
       <div fxFlex="1 1" fxLayoutAlign="center center">
         <input
           type="text"
@@ -67,7 +67,7 @@
           placeholder="Write a message..."
         />
       </div>
-      <div fxLayout (click)="onSendMessage()" fxFlex="0 0 60px" fxLayoutAlign="center center">
+      <div fxLayout (click)="onSendMessage()" fxFlex="0 0 50px" fxLayoutAlign="center center">
         <mat-icon>send</mat-icon>
       </div>
     </div>

@@ -23,18 +23,94 @@ mat-toolbar {
   margin-left: 8px;
 }
 
-img {
+.right-side-menu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-wrapper{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+
+  img {
   height: 2em;
 }
 
+.under-logo-shadow{
+  position: absolute;
+    width: 0;
+    height:0;
+    background-color: $primary-color;
+    z-index: -1;
+    transition: 0.5s;
+    filter: blur(3px);
+  }
+
+}
+
+.right-side-menu:hover > .logo-wrapper > .under-logo-shadow{
+  width: 0.6em;
+  height: 0.6em;
+filter: blur(0.4em);
+}
+
+
 ul li {
+  position: relative;
   display: inline-block;
   margin-left: 10px;
   padding: 5px 10px;
   font-size: 1.7rem;
   font-weight: 400;
   cursor: pointer;
+  perspective: 3em;
+
+  a{
+    text-decoration: none;
+    color: $white;
+  }
 }
+li::before {
+  content: "";  
+  position: absolute;
+  left: 0;
+ bottom: 0;
+  width:100%;
+  height: 0%;
+  opacity: 0.5  ;
+ filter: blur(10px);
+  transform: translateY(10px) rotateX(145deg) scale(1, .80); 
+  background: $primary-color;
+  transition: height 0.2s;
+  z-index: -1;
+}
+
+li:hover::before{
+  height:100%;
+}
+
+li::after {
+  content: "";
+  position: absolute;
+  margin: 0 auto;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  height: 1px;
+  background-color: $primary-color;
+ transition: left 0.2s, right 0.2s;
+}
+
+li:hover::after {
+  left: 10px;
+  right: 10px;
+}
+
+
 
 .burger-button,
 ul {
@@ -47,6 +123,7 @@ ul {
   bottom: 0;
   left: 0;
   right: 0;
+  margin: 0 auto;
   height: 1px;
   background-color: rgba($color: $primary-color, $alpha: 50%);
 }

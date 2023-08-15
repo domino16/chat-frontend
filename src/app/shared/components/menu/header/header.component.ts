@@ -1,9 +1,11 @@
 import { Component } from "@angular/core";
+import { lineStretchAniamtion } from "src/app/shared/animation";
 
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"],
+  animations:[lineStretchAniamtion]
 })
 export class HeaderComponent {
   // true, when menu is open

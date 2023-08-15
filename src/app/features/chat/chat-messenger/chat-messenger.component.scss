@@ -15,10 +15,19 @@
     border: 1px solid rgba($color: $primary-color, $alpha: 10%);
 
     mat-icon {
-      font-size: 2.5rem;
-      color: white;
-      color: $primary-color;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+      left: 15px;
+      padding: 5px;
       cursor: pointer;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+      color: $primary-color;
+    }
+
+    mat-icon:hover {
+      background-color: $dark-color-lighter;
     }
 
     img {
@@ -39,9 +48,8 @@
     overflow-y: scroll;
     border: 1px solid rgba($color: $primary-color, $alpha: 10%);
 
-
     .message-bubble {
-      display: flex; 
+      display: flex;
       align-items: center;
       max-width: 70%;
       padding: 8px 12px;
@@ -52,7 +60,7 @@
       font-size: 1.5rem;
       cursor: pointer;
       position: relative;
-     
+
       &--right {
         align-self: flex-end;
         background-color: $primary-color;
@@ -105,15 +113,15 @@
       }
     }
 
-    app-delete-button{
+    app-delete-button {
       position: absolute;
       left: -38px;
-      transform: scale(.6);
+      transform: scale(0.6);
     }
 
     .message-date,
     .message-status,
-    app-delete-button{
+    app-delete-button {
       color: $gray-color;
       display: none;
     }
@@ -122,8 +130,11 @@
       display: none;
 
       &:checked {
-       + .message-date, ~ .message-status, ~ app-delete-button,  ~ .message-bubble > app-delete-button {
-         display: block;
+        + .message-date,
+        ~ .message-status,
+        ~ app-delete-button,
+        ~ .message-bubble > app-delete-button {
+          display: block;
         }
       }
     }
@@ -148,10 +159,19 @@
     }
 
     mat-icon {
-      font-size: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 10px;
+      font-size: 3rem;
       color: $primary-color;
-      margin-bottom: 5px;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    mat-icon:hover {
+      background-color: $dark-color-lighter;
     }
   }
 }

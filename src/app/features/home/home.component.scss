@@ -1,5 +1,4 @@
 @use "@angular/material" as mat;
-
 @import "src/styles/colors";
 @import "src/styles/variables";
 
@@ -32,8 +31,26 @@ h3 {
   margin-bottom: 1.5em;
 }
 
-.home-side--right img {
-  width: 300px;
+.home-side--right{
+  position: relative;
+  img{
+    width: 300px;
+  }
+  
+  .under-logo-shadow {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    filter: blur(0em);
+    background-color: $primary-color;
+    z-index: -1;
+    transition: 0.5s; filter: blur(1em);
+  }
+  & img:hover ~ .under-logo-shadow {
+    width: 80px;
+    height: 80px;
+    filter: blur(5em);
+  }
 }
 
 .error-msg {
@@ -54,13 +71,19 @@ justify-content: center;
   }
 }
 
-p {
+.forgotten-password-paragraph {
   font-size: 1.5rem;
   color: $primary-color;
   text-decoration: underline;
   margin-left: 1.5em;
   cursor: pointer;
+  transition: transform 0.2s;
 }
+
+.forgotten-password-paragraph:hover {
+ transform: scale(1.02);
+}
+
 
 //checkbox styles
 .checkbox-wrapper {
@@ -165,6 +188,7 @@ input {
 ::ng-deep .mdc-notched-outline > * {
   border-color: $white !important;
 }
+
 
 // styles for untouched input
 ::ng-deep .mdc-text-field--focused .mdc-notched-outline > * {

@@ -6,7 +6,7 @@ import { ChatComponent } from "./features/chat/chat.component";
 import { AuthGuard } from "./core/auth/auth.guard";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: "", component: HomeComponent},
   { path: "signup", component: SignupComponent },
   { path: "chat", component: ChatComponent, canActivate:[AuthGuard] },
 ];

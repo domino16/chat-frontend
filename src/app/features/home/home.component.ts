@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
+import { lineStretchAniamtion } from "src/app/shared/animation";
 import { loginFailure, loginStart} from "src/app/store/auth/auth.actions";
 import { errorMessage } from "src/app/store/auth/auth.selectors";
 
@@ -9,6 +10,9 @@ import { errorMessage } from "src/app/store/auth/auth.selectors";
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
+  animations: [
+    lineStretchAniamtion
+   ],
 })
 export class HomeComponent implements OnDestroy {
 

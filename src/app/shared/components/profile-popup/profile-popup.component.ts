@@ -55,6 +55,7 @@ export class ProfilePopupComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.authUserSubscription.unsubscribe();
   }
+  
 
   editProfile() {
     const firstName = this.editForm.controls["firstName"].value;
@@ -77,14 +78,14 @@ export class ProfilePopupComponent implements OnDestroy {
         .upload(file, currentUserId)
         ?.pipe(switchMap(() => this.userService.editProfile(request)))
         .subscribe((token) => {
-          this.authService.handleAuth(token.token), (this.isEditMode = false);
+          this.authService.handleAuth(token.token), this.closeEditMode();
         });
       return;
     }
 
     this.userService.editProfile(request).subscribe({
       next: (token) => {
-        this.authService.handleAuth(token.token), (this.isEditMode = false);
+        this.authService.handleAuth(token.token), this.closeEditMode();
       },
       error: (err) => this.errorMessage = err.error.text
     });
@@ -97,5 +98,10 @@ export class ProfilePopupComponent implements OnDestroy {
 
   onClose() {
     this.popupClose.emit();
+  }
+
+  closeEditMode(){
+    this.errorMessage = ""
+    this.isEditMode = !this.isEditMode
   }
 }

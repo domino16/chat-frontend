@@ -1,15 +1,18 @@
 <!-- <div class="toolbar-wrapper" [ngClass]="{'scrolled': isScrolled }" (window:scroll)="onScroll()" > -->
 <app-sidenav *ngIf="isMenuActive"></app-sidenav>
 <mat-toolbar (window:scroll)="onScroll()">
+  <div class="right-side-menu">
+  <div class="logo-wrapper">
   <img class="header-item" src="/assets/logo-gef167d036_640.png" alt="logo" />
-  <span class="logo-subtitle header-item">SendM</span>
+  <div class="under-logo-shadow"></div></div>
+  <span class="logo-subtitle header-item">SendM</span></div>
   <button mat-icon-button fxHide.gt-xs="true" class="burger-button header-item" (click)="isMenuActive = !isMenuActive">
     <mat-icon>menu</mat-icon>
   </button>
   <ul fxHide.xs="true" class="navigation-right">
     <li>About me</li>
     <li routerLink="/signup">Sign Up</li>
-    <li>Contact</li>
+    <li><a href="https://www.linkedin.com/in/dominik-pietrzyk-02966225a/">Contact</a></li>
   </ul>
-  <div [ngClass]="{ 'bottom-line': isScrolled && !isMenuActive }"></div>
+  <div class="bottom-line" @lineStretchAniamtion *ngIf="isScrolled && !isMenuActive" ></div>
 </mat-toolbar>

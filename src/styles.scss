@@ -54,6 +54,7 @@ $my-theme: mat.define-light-theme(
 html {
   font-size: 62.5%;
   font-family: $font-family;
+overflow-x: hidden;
   
 }
 
