@@ -51,7 +51,7 @@
       </label>
     <!-- <button mat-fab extended [disabled]="!selectedFiles" (click)="upload(authUser.email)">save</button> -->
   </div>
-    <form [formGroup]="editForm" fxLayout="column" fxFlexAlign="center" (submit)="editProfile()">
+    <form [formGroup]="editForm" fxLayout="column" fxFlexAlign="center center" (submit)="editProfile()">
       <ul>
         <li>
           <label class="list-item-name">first name:</label>
@@ -71,12 +71,12 @@
           />
         </li>
         <li>
-          <label class="list-item-name">password</label>
+          <label class="list-item-name">password:</label>
           <input class="list-item-input" placeholder="enter old password" formControlName="oldPassword" />
           <input
             type="text"
             (input)="isChanged = true"
-            class="list-item-input"
+            class="list-item-input new-password-input"
             placeholder="enter new password"
             formControlName="newPassword"
           />
@@ -90,3 +90,4 @@
     </form>
   </ng-container>
 </div>
+

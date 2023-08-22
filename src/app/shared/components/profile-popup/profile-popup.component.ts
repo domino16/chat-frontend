@@ -6,7 +6,6 @@ import { User } from "src/app/core/interfaces/user";
 import { AuthService } from "src/app/core/services/auth.service";
 import { FileUploadService } from "src/app/core/services/file-upload.service";
 import { UserService } from "src/app/core/services/user.service";
-import { loginSuccess } from "src/app/store/auth/auth.actions";
 import { authUser } from "src/app/store/auth/auth.selectors";
 
 export interface editRequest {
@@ -91,6 +90,7 @@ export class ProfilePopupComponent implements OnDestroy {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   selectFile(event: any): void {
     this.isChanged = true;
     this.selectedFiles = event.target.files;

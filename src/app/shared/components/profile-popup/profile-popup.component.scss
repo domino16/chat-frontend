@@ -18,6 +18,7 @@
   background-color: $dark-color-lighter;
   border-radius: 12px;
   padding: 0 20px;
+  margin:0 5px;
   box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
     inset 0 0 0 1px rgba($color: $dark-color-lighter, $alpha: 0.5);
 }
@@ -56,20 +57,22 @@ ul {
 
 ul li {
   display: flex;
+
   position: relative;
   max-width: 100%;
   font-size: 1.6rem;
   border-bottom: 1px solid rgba($color: $white, $alpha: 0.2);
   align-items: center;
+  flex-wrap: wrap;
 
   .list-item-name {
     flex: 100px 0 0;
     font-weight: 500;
-    padding: 10px;
   }
 
   .list-item-text {
     font-weight: 100;
+    padding: 10px;
   }
 
   .list-item-edit {
@@ -85,7 +88,9 @@ ul li {
     border-radius: 15px;
     font-size: 1.6rem;
     color: white;
+    margin: 3px 0px;
   }
+
 }
 
 button{
@@ -105,3 +110,13 @@ button{
 .close-icon {
   background-color: rgba($color: $gray-color, $alpha: 0.2);
 }
+
+ @media(min-width: 364px) and (max-width:590px){
+  ul li {
+.new-password-input{
+  margin-left: 100px;
+}
+
+  }
+
+ }

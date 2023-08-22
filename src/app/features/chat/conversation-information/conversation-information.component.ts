@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { switchMap } from "rxjs";
 import { UserService } from "src/app/core/services/user.service";

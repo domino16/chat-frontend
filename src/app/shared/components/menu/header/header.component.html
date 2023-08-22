@@ -1,14 +1,17 @@
 <!-- <div class="toolbar-wrapper" [ngClass]="{'scrolled': isScrolled }" (window:scroll)="onScroll()" > -->
-<app-sidenav *ngIf="isMenuActive"></app-sidenav>
+<app-sidenav *ngIf="isMenuActive" ></app-sidenav>
 <mat-toolbar (window:scroll)="onScroll()">
-  <div class="right-side-menu">
+  <div class="left-side-menu">
   <div class="logo-wrapper">
-  <img class="header-item" src="/assets/logo-gef167d036_640.png" alt="logo" />
+  <img class="header-item" src="/assets/logo-gef167d036_640.webp" alt="logo" />
   <div class="under-logo-shadow"></div></div>
   <span class="logo-subtitle header-item">SendM</span></div>
-  <button mat-icon-button fxHide.gt-xs="true" class="burger-button header-item" (click)="isMenuActive = !isMenuActive"  aria-label="menu">
+  <!-- <button mat-icon-button fxHide.gt-xs="true" class="burger-button header-item" (click)="isMenuActive = !isMenuActive"  aria-label="menu">
     <mat-icon>menu</mat-icon>
-  </button>
+  </button> -->
+  		 <button id="burger" class="open-main-nav header-item" fxHide.gt-xs="true"  (click)="isMenuActive = !isMenuActive" [ngClass]="{'is-open': isMenuActive}" aria-label="menu">
+			<span class="burger"></span>
+		</button>
   <ul fxHide.xs="true" class="navigation-right">
     <li>About me</li>
     <li routerLink="/signup">Sign Up</li>
