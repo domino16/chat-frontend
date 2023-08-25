@@ -37,7 +37,7 @@
     <input
       [checked]="(selectedChat$ | async)?.chatId === chat.chatId"
       type="radio"
-      id="center"
+      id="{{chat.chatId}}"
       name="radio"
       (change)="onChatSelectChange(chat)"
     />

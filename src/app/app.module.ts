@@ -2,7 +2,6 @@ import { NgModule, isDevMode } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { AppComponent } from "./app.component";
 import { HomeModule } from "./features/home/home.module";
-import { AuthModule } from "./core/auth/auth.module";
 import { SharedModule } from "./shared/shared.module";
 import { ChatModule } from "./features/chat/chat.module";
 import { StoreModule } from "@ngrx/store";
@@ -15,6 +14,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { authReducer } from "./store/auth/auth.reducer";
 import { AuthEffects } from "./store/auth/auth.effects";
+import { BrowserModule } from "@angular/platform-browser";
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +26,7 @@ import { AuthEffects } from "./store/auth/auth.effects";
     ChatModule,
     SharedModule,
     BrowserAnimationsModule,
+    BrowserModule.withServerTransition({ appId: "serverApp" }),
     StoreModule.forRoot(),
     EffectsModule.forRoot(),
     StoreModule.forFeature("auth", authReducer),

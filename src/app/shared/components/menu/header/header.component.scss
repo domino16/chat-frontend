@@ -38,7 +38,7 @@ mat-toolbar {
 
   img {
     width: 2em;
-  height: 2em;
+    height: auto;
 }
 
 .under-logo-shadow{
@@ -53,7 +53,7 @@ mat-toolbar {
 
 }
 
-.right-side-menu:hover > .logo-wrapper > .under-logo-shadow{
+.left-side-menu:hover > .logo-wrapper > .under-logo-shadow{
   width: 0.6em;
   height: 0.6em;
 filter: blur(0.4em);

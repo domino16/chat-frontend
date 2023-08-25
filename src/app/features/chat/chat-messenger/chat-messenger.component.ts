@@ -54,7 +54,6 @@ export class ChatMessengerComponent  {
   }
 
   deleteMessage(messageId:string){
-    console.log(messageId);
     this.chatService.deleteMessage(messageId).subscribe(()=>{ setTimeout(() => {
       this.store.dispatch(loadMessages())
     }, 3000);})
