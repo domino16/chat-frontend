@@ -7,6 +7,7 @@ import { authUser } from "src/app/store/auth/auth.selectors";
 import { Message } from "../interfaces/message";
 import { RxStompService } from "./rx-stomp.service";
 import { getSelectedChat } from "src/app/store/chat/chat.selectors";
+import { environment } from "src/environments/environment";
 
 export interface createChatRequest {
   senderId: string;
@@ -19,7 +20,7 @@ export interface createChatRequest {
   providedIn: "root",
 })
 export class ChatService {
-  url = "http://localhost:8081";
+  url = environment.apiUrlChat;
   authUser$ = this.store.select(authUser);
 
   constructor(private http: HttpClient, private store: Store, private rxStompService:RxStompService) {}

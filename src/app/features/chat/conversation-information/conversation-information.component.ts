@@ -4,6 +4,7 @@ import { Store } from "@ngrx/store";
 import { switchMap } from "rxjs";
 import { UserService } from "src/app/core/services/user.service";
 import { getSelectedChat } from "src/app/store/chat/chat.selectors";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-conversation-information",
@@ -11,6 +12,7 @@ import { getSelectedChat } from "src/app/store/chat/chat.selectors";
   styleUrls: ["./conversation-information.component.scss"],
 })
 export class ConversationInformationComponent{
+  apiUrl = environment.apiUrlAuth
   @Output() toggle = new EventEmitter();
 
   recipientUser$ = this.store.select(getSelectedChat).pipe(

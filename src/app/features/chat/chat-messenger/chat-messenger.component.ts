@@ -8,6 +8,7 @@ import { FormControl } from "@angular/forms";
 import { incrementMessagesLimit, loadMessages, selectChat, sendMessage } from "src/app/store/chat/chat.actions";
 import { ChatService } from "src/app/core/services/chat.service";
 import { RxStompService } from "src/app/core/services/rx-stomp.service";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-chat-messenger",
@@ -20,6 +21,7 @@ export class ChatMessengerComponent  {
   messages$:Observable<Message[]> = this.store.select(selectAllMessages);
   isMessagesLoaded$:Observable<boolean> = this.store.select(isMessagesLoaded);
   isMoreMessagesLoading$:Observable<boolean> = this.store.select(isMoreMesssageLoading)
+  apiUrl = environment.apiUrlAuth
 
 //toggle open/close right box with user information
   @Output() toggle = new EventEmitter();

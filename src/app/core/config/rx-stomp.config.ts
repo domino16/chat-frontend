@@ -1,8 +1,10 @@
 import {RxStompConfig } from "@stomp/rx-stomp";
+import { environment } from "src/environments/environment";
 
 export const rxStompConfig: RxStompConfig = {
+  
   // Which server?
-  brokerURL: "ws://localhost:8081/ws",
+  brokerURL: environment.wsApiUrl,
 
   // How often to heartbeat?
   // Interval in milliseconds, set to 0 to disable

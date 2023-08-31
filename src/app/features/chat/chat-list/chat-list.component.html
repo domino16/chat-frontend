@@ -43,7 +43,7 @@
     />
     <div fxLayout class="box">
       <div class="box__left" fxFlex="0 0 65px" fxLayout fxLayoutAlign="end">
-        <img fxFlexAlign="center" src="http://localhost:8080/users/files/{{chat.recipientId}}" alt="" />
+        <img fxFlexAlign="center" src="{{apiUrl}}/users/files/{{chat.recipientId}}" alt="" />
       </div>
       <div class="box__center" fxFlex="1 1" fxLayout="column" fxFlexAlign="center">
         <p>{{ chat.recipientName }}</p>

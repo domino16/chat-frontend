@@ -15,7 +15,7 @@
     "format": "prettier \"./src/**/*.{ts,js,html,scss}\" --write",
     "dev:ssr": "ng run chat-frontend:serve-ssr",
     "serve:ssr": "node dist/chat-frontend/server/main.js",
-    "build:ssr": "ng build && ng run chat-frontend:server",
+    "build:ssr": "ng build --configuration production && ng run chat-frontend:server",
     "prerender": "ng run chat-frontend:prerender"
   },
   "private": true,

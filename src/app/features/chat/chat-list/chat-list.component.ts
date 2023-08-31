@@ -11,6 +11,7 @@ import { UserService } from "src/app/core/services/user.service";
 import { authUser } from "src/app/store/auth/auth.selectors";
 import { selectChat } from "src/app/store/chat/chat.actions";
 import { getSelectedChat, isChatsLoaded, selectAllChats } from "src/app/store/chat/chat.selectors";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-chat-list",
@@ -37,6 +38,8 @@ export class ChatListComponent {
   authUser$ = this.store.select(authUser) as Observable<User>;
 
   selectedChat$ = this.store.select(getSelectedChat)
+
+  apiUrl = environment.apiUrlAuth
   
 
   // users displayed in search field

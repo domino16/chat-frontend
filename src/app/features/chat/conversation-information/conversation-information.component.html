@@ -4,7 +4,7 @@
 
 <div class="chat-list-header" fxLayout="column" fxFlex="center" *ngIf="recipientUser$ | async as recipientUser">
   <div fxLayout fxLayoutAlign="center">
-    <img class="avatar-img" src="http://localhost:8080/users/files/{{recipientUser.email}}"  alt="avatar" />
+    <img class="avatar-img" src="{{apiUrl}}/users/files/{{recipientUser.email}}"  alt="avatar" />
   </div>
   <div fxFlexAlign="center">
     <p class="recipient-name" >

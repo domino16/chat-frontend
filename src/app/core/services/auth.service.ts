@@ -7,12 +7,14 @@ import { Store } from "@ngrx/store";
 import jwtDecode from "jwt-decode";
 import { Router } from "@angular/router";
 import { isPlatformBrowser } from "@angular/common";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
   isBrowser?: boolean;
+  authUrl: string = environment.apiUrlAuth;
 
   constructor(
     private http: HttpClient,
@@ -24,14 +26,14 @@ export class AuthService {
   }
 
   getAuth(email: string, password: string): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>("http://localhost:8080/auth/login", {
+    return this.http.post<{ token: string }>(`${this.authUrl}/auth/login`, {
       email,
       password,
     });
   }
 
   signUp(newUser: User): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>("http://localhost:8080/auth/signup", newUser);
+    return this.http.post<{ token: string }>(`${this.authUrl}/auth/signup`, newUser);
   }
 
   handleAuth(accessToken: string): void {
