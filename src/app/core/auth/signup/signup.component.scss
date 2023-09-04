@@ -21,7 +21,9 @@ img {
   cursor: pointer;
 }
 
-form {
+form {display: flex;
+  flex-direction: column;
+  align-self: center;
   max-width: 400px;
   width: 100%;
   padding: 10px 20px;
@@ -90,7 +92,7 @@ $matWarnPallete: mat.define-palette(mat.$red-palette);
 
 //checkbox styles
 .checkbox-wrapper {
-  
+  align-self: flex-start;
   margin: 0 0 20px;
   color: white;
 }
@@ -185,7 +187,14 @@ $matWarnPallete: mat.define-palette(mat.$red-palette);
   transition-delay: 0.15s;
 }
 
+.signup-buttons-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 app-footer {
   margin-top: 20px;
 width: 100%;
+text-align:left;
 }

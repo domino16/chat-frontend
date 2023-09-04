@@ -2,13 +2,9 @@
   <mat-icon>arrow_back_ios_new</mat-icon>
 </a>
 
-<div class="chat-list-header" fxLayout="column" fxFlex="center" *ngIf="recipientUser$ | async as recipientUser">
-  <div fxLayout fxLayoutAlign="center">
+<div class="wrapper" *ngIf="recipientUser$ | async as recipientUser">
     <img class="avatar-img" src="{{apiUrl}}/users/files/{{recipientUser.email}}"  alt="avatar" />
-  </div>
-  <div fxFlexAlign="center">
     <p class="recipient-name" >
       {{ recipientUser.firstName }} {{ recipientUser.lastName }}
     </p>
-  </div>
 </div>

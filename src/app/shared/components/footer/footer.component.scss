@@ -2,6 +2,7 @@
 
 :host {
   display: flex;
+  align-items: center;
   max-width: 1400px;
   height: 40px;
   margin: 0 auto;
@@ -11,7 +12,15 @@
 }
 
 .my-name {
+  flex: 1 1;
   font-size: 1.6rem;
+}
+
+.right-side-icons{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 30px;
 }
 
 fa-icon {

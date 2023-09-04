@@ -7,7 +7,6 @@ import { Message } from "src/app/core/interfaces/message";
 import { FormControl } from "@angular/forms";
 import { incrementMessagesLimit, loadMessages, selectChat, sendMessage } from "src/app/store/chat/chat.actions";
 import { ChatService } from "src/app/core/services/chat.service";
-import { RxStompService } from "src/app/core/services/rx-stomp.service";
 import { environment } from "src/environments/environment";
 
 @Component({
@@ -26,7 +25,7 @@ export class ChatMessengerComponent  {
 //toggle open/close right box with user information
   @Output() toggle = new EventEmitter();
 
-  constructor(private store: Store, private chatService: ChatService,private rxStompService: RxStompService) {}
+  constructor(private store: Store, private chatService: ChatService) {}
 
 // load more messages when user scroll messages box in 95% 
   onScroll(e: Event) {

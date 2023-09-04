@@ -7,9 +7,12 @@ import { Component } from "@angular/core";
   styleUrls: ["./sidenav.component.scss"],
   animations: [
     trigger("fadeInOut", [
-      transition(":enter", [style({ opacity: 0, visibility: "hidden"}), animate(".3s", style({ opacity: 1,visibility: "visible" }))]),
+      transition(":enter", [
+        style({ opacity: 0, visibility: "hidden" }),
+        animate(".3s", style({ opacity: 1, visibility: "visible" })),
+      ]),
       transition(":leave", [animate(".3s", style({ opacity: 0, visibility: "hidden" }))]),
-    ]),]
+    ]),
+  ],
 })
-export class SidenavComponent {
-}
+export class SidenavComponent {}

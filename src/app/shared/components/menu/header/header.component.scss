@@ -59,7 +59,6 @@ mat-toolbar {
 filter: blur(0.4em);
 }
 
-
 ul li {
   position: relative;
   display: inline-block;
@@ -112,6 +111,7 @@ li:hover::after {
 }
 
 ul {
+  display: none;;
   margin-left: auto;
   margin-right: 0;
 }
@@ -188,4 +188,14 @@ ul {
 
 app-sidenav {
   height: 100vh;
+}
+
+@media(min-width:600px){
+  .navigation-right{
+    display: block;
+  }
+
+  .burger{
+    display: none;
+  }
 }

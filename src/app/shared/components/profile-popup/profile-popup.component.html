@@ -1,29 +1,13 @@
 <div class="popup" *ngIf="authUser$ | async as authUser">
   <mat-icon class="close-icon" (click)="onClose()">close</mat-icon>
-  <div fxLayout fxLayoutAlign="center">
-    <img class="avatar-img" src="{{authUser.avatarImg}}"  alt="avatar" />
-  </div>
-
-
-
-  <!-- <div *ngIf="currentFile">
-    <div
-      role="progressbar"
-      attr.aria-valuenow="{{ progress }}"
-      aria-valuemin="0"
-      aria-valuemax="100"
-      [ngStyle]="{ width: progress + '%' }"
-    >
-      {{ progress }}%
-    </div>
-  </div> -->
+  <img class="avatar-img" src="{{ authUser.avatarImg }}" alt="avatar" />
 
   <div *ngIf="errorMessage" class="error-msg">
     <mat-icon>highlight_off</mat-icon>
-    {{ errorMessage}}
+    {{ errorMessage }}
   </div>
   <ng-container *ngIf="!isEditMode">
-    <ul fxFlexAlign="start">
+    <ul>
       <li>
         <span class="list-item-name">first name:</span>
         <span class="list-item-text">{{ authUser.firstName }}</span>
@@ -41,34 +25,23 @@
         <span class="list-item-text">{{ authUser.email }}</span>
       </li>
     </ul>
-    <div fxLayout fxFlexAlign="center">
       <button mat-fab extended (click)="isEditMode = !isEditMode">edit</button>
-    </div>
   </ng-container>
-  <ng-container *ngIf="isEditMode">  <div fxLayout fxFlexAlign="center">
+  <ng-container *ngIf="isEditMode">
       <label>
-        <input type="file" (change)="selectFile($event)" />
+        <input type="file" accept="image/*" (change)="selectFile($event)" />
       </label>
-    <!-- <button mat-fab extended [disabled]="!selectedFiles" (click)="upload(authUser.email)">save</button> -->
-  </div>
-    <form [formGroup]="editForm" fxLayout="column" fxFlexAlign="center center" (submit)="editProfile()">
+      <!-- <button mat-fab extended [disabled]="!selectedFiles" (click)="upload(authUser.email)">save</button> -->
+
+    <form [formGroup]="editForm"  (submit)="editProfile()">
       <ul>
         <li>
           <label class="list-item-name">first name:</label>
-          <input
-            type="text"
-            (input)="isChanged = true"
-            class="list-item-input"
-            formControlName="firstName"/>
+          <input type="text" (input)="isChanged = true" class="list-item-input" formControlName="firstName" />
         </li>
         <li>
           <label class="list-item-name">last name:</label>
-          <input
-            type="text"
-            (input)="isChanged = true"
-            class="list-item-input"
-            formControlName="lastName"
-          />
+          <input type="text" (input)="isChanged = true" class="list-item-input" formControlName="lastName" />
         </li>
         <li>
           <label class="list-item-name">password:</label>
@@ -82,12 +55,7 @@
           />
         </li>
       </ul>
-      <div fxLayout fxFlexAlign="center">
-        <button [disabled]="!isChanged" mat-fab extended >
-          save
-        </button>
-      </div>
+        <button class="save-button" [disabled]="!isChanged" mat-fab extended>save</button> 
     </form>
   </ng-container>
 </div>
-

@@ -1,6 +1,6 @@
 <app-header></app-header>
-<div fxLayout fxLayout.lt-md="column" class="home-wrapper">
-  <div fxFlex class="home-side--left">
+<div class="home-wrapper">
+  <div class="home-side--left">
     <h1>
       Hang out
       <br />
@@ -10,7 +10,7 @@
 
     <!-- ######## signIn ######################### -->
 
-    <form [formGroup]="loginForm" fxLayout="column" (submit)="logInClick()">
+    <form [formGroup]="loginForm" (submit)="logInClick()">
       <div *ngIf="errorMessage | async" class="error-msg">
         <mat-icon>highlight_off</mat-icon>
         {{ errorMessage | async }}
@@ -18,23 +18,18 @@
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input type="email" matInput formControlName="emailFormControl" />
-        <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error> -->
+
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
         <input type="password" matInput formControlName="passwordFormControl" />
       </mat-form-field>
-      <div fxLayout fxLayoutAlign="start center">
+      <div class="under-form-login-buttons">
         <button mat-fab extended>Log In</button>
         <p class="forgotten-password-paragraph" >Forgotten your password?</p>
       </div>
       <!-- checkbox -->
-      <div class="checkbox-wrapper">
+      <div class="checkbox-wrapper" >
         <input type="checkbox" id="cbx" />
         <label for="cbx" class="check">
           <svg width="18px" height="18px" viewBox="0 0 18 18">
@@ -50,7 +45,7 @@
 
     <!-- ######## logo ##################### -->
   </div>
-  <div fxFlex fxLayout fxLayoutAlign="center center" class="home-side--right">
+  <div class="home-side--right">
     <img src="/assets/logo-gef167d036_640.webp" width="588" height="640" alt="logo" rel="preload"/>
           <div class="under-logo-shadow"></div>
   </div>

@@ -8,6 +8,8 @@
 }
 
 .home-wrapper {
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   padding: $header-height 35px 100px 35px;
   max-width: 500px;
@@ -23,6 +25,11 @@ h1 {
   margin: 0.5em 0;
 }
 
+form{
+  display: flex;
+  flex-direction: column;
+}
+
 h2 {
   color: rgba($color: $white, $alpha: 80%);
   font-size: 2rem;
@@ -31,8 +38,17 @@ h2 {
   margin-bottom: 1.5em;
 }
 
+.home-side--left{
+  flex: 1;
+}
+
 .home-side--right{
-  position: relative;
+position: relative;
+display: flex;
+flex: 1;
+align-items: center;
+justify-content: center;
+
   img{
     width: 300px;
     height: auto;
@@ -213,6 +229,12 @@ $matWarnPallete: mat.define-palette(mat.$red-palette);
   color: mat.get-color-from-palette($matWarnPallete, 500) !important;
 }
 
+.under-form-login-buttons{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
 @media (width >= 600px) {
   h1,
   h3 {
@@ -222,6 +244,7 @@ $matWarnPallete: mat.define-palette(mat.$red-palette);
 
 @media (width >= 960px) {
   .home-wrapper {
+    flex-direction: row;
     max-width: 1400px;
   }
 

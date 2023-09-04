@@ -11,15 +11,19 @@
 .chat-messenger {
   // ####################  section header ##########################################
   &__header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 80px;
     font-size: 1.8rem;
     border: 1px solid rgba($color: $primary-color, $alpha: 10%);
 
     mat-icon {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-      left: 15px;
-      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
       cursor: pointer;
       border-radius: 50%;
       transition: background-color 0.3s;
@@ -28,6 +32,16 @@
 
     mat-icon:hover {
       background-color: $dark-color-lighter;
+    }
+
+    .arrow-back-header-icon {
+      position: absolute;
+      left: 8px;
+    }
+
+    .three-dot-header-icon {
+      position: absolute;
+      right: 8px;
     }
 
     img {
@@ -44,9 +58,15 @@
     display: flex;
     position: relative;
     flex-direction: column-reverse;
+    flex: 1 1;
     width: 100%;
     overflow-y: scroll;
     border: 1px solid rgba($color: $primary-color, $alpha: 10%);
+
+    label {
+      display: flex;
+      flex-direction: column;
+    }
 
     .message-bubble {
       display: flex;
@@ -72,6 +92,12 @@
         align-self: flex-start;
         background-color: $dark-color-lighter;
       }
+    }
+
+    .message-with-avatar-wrapper {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
     }
 
     .img-avatar-beside-message {
@@ -144,12 +170,18 @@
   //   #################### sender section #########################################
 
   &__sender {
+    display: flex;
+    flex: 0 0 60px;
+    padding: 0px;
+    align-items: center;
+    justify-content: center;
     border: 1px solid rgba($color: $primary-color, $alpha: 10%);
 
     //input sender styles
     input {
+      flex: 1 1;
       width: 100%;
-      padding: 8px 10px;
+      padding: 8px;
       margin-left: 15px;
       border: 0;
       outline: 0;
@@ -160,18 +192,28 @@
     }
 
     mat-icon {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 10px;
+      flex: 0 0 50px;
       font-size: 3rem;
       color: $primary-color;
-      border-radius: 50%;
-      transition: background-color 0.3s;
       cursor: pointer;
+      overflow: visible;
     }
 
-    mat-icon:hover {
+    mat-icon::after{
+      content: '';
+      position: absolute;
+      width: 4.2rem;
+      height: 4.2rem;
+      transition: background-color 0.3s;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    mat-icon:hover::after {
       background-color: $dark-color-lighter;
     }
   }

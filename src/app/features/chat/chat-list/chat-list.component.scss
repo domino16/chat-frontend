@@ -1,7 +1,6 @@
 @import "src/styles/colors";
 
 :host {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -9,39 +8,44 @@
 
 //------------header styles----------------------------------------------------
 .chat-list-header {
-  padding: 15px 0 8px;
-  height: 100px;
   position: relative;
+  display: flex;
+  align-items: center;
+  padding: 15px 0 8px;
+ height: 100px;
 
   img {
     width: 70px;
     height: 70px;
+    margin-left: 20px;
     border-radius: 50%;
     object-fit: cover;
+  
   }
-
   p {
     font-size: 2rem;
     margin-left: 10px;
   }
 
-  .profile-icon {
+  mat-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    right: 0;
-    padding: 5px;
-    cursor: pointer;
+    padding: 17px;
     border-radius: 50%;
+    cursor: pointer;
     transition: background-color 0.3s;
   }
 
+  .profile-icon {
+    right: 0px;
+    top: 15px;
+  }
+
   .logout-icon {
-    position: absolute;
-    right: 0;
+    right: 0px;
     bottom: 5px;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: background-color 0.3s;
   }
 
   mat-icon:hover {
@@ -86,6 +90,7 @@ mat-form-field {
 }
 
 .box {
+  display: flex;
   position: relative;
   width: 100%;
   height: 110px;
@@ -94,7 +99,12 @@ mat-form-field {
   border-radius: 10px;
 
   &__left {
+    display: flex;
+    flex:0 0 65px;
+    justify-content: flex-end;
+  
     img {
+      align-self: center;
       width: 50px;
       height: 50px;
       border-radius: 50%;
@@ -103,6 +113,10 @@ mat-form-field {
   }
 
   &__center {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    align-self: center;
     overflow: hidden;
     white-space: nowrap;
     word-break: break-word;
@@ -127,8 +141,12 @@ mat-form-field {
   }
 
   &__right {
+    display: flex;
+    flex-direction: column;
+    flex:0 0 62px;
+    align-items: center;
+    justify-content: center;
     font-size: 1.4rem;
-
     .last-message-date {
       color: $gray-color;
       font-size: 1.2rem;

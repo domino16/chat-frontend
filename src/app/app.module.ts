@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { authReducer } from "./store/auth/auth.reducer";
 import { AuthEffects } from "./store/auth/auth.effects";
 import { BrowserModule } from "@angular/platform-browser";
+import { FlexLayoutModule } from "@angular/flex-layout";
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,8 +27,7 @@ import { BrowserModule } from "@angular/platform-browser";
     HomeModule,
     ChatModule,
     SharedModule,
-    BrowserAnimationsModule,
-    BrowserModule.withServerTransition({ appId: "serverApp" }),
+    BrowserModule.withServerTransition({ appId: "serverApp" }), BrowserAnimationsModule,
     StoreModule.forRoot(),
     EffectsModule.forRoot(),
     StoreModule.forFeature("auth", authReducer),

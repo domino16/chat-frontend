@@ -1,6 +1,6 @@
 <img routerLink="/" src="../../../assets/logo-gef167d036_640.png" alt="logo" />
 <h1>SendM</h1>
-<form [formGroup]="signupForm" fxLayout="column" fxFlexAlign="center" (submit)="logInClick()">
+<form [formGroup]="signupForm" (submit)="logInClick()">
   <div *ngIf="errorMessage | async" class="error-msg">
     <mat-icon>highlight_off</mat-icon>
     {{ errorMessage | async }}
@@ -26,7 +26,7 @@
     <input type="password" matInput formControlName="repassword" />
   </mat-form-field>
   <!-- checkbox -->
-  <div fxFlexAlign="start" class="checkbox-wrapper">
+  <div class="checkbox-wrapper">
     <input type="checkbox" id="cbx" />
     <label for="cbx" class="check">
       <svg width="18px" height="18px" viewBox="0 0 18 18">
@@ -41,7 +41,7 @@
       </span>
     </label>
   </div>
-  <div fxLayout fxFlexAlign="center">
+  <div class="signup-buttons-wrapper">
     <button mat-fab extended>Sign Up</button>
     <p fxFlexAlign="center" routerLink="/">or sign in</p>
   </div>

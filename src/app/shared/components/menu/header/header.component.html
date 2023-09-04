@@ -6,13 +6,10 @@
   <img  class="header-item" src="/assets/logo-gef167d036_640.webp" width="588" height="640" alt="logo" />
   <div class="under-logo-shadow"></div></div>
   <span class="logo-subtitle header-item">SendM</span></div>
-  <!-- <button mat-icon-button fxHide.gt-xs="true" class="burger-button header-item" (click)="isMenuActive = !isMenuActive"  aria-label="menu">
-    <mat-icon>menu</mat-icon>
-  </button> -->
-  		 <button id="burger" class="open-main-nav header-item" fxHide.gt-xs="true"  (click)="isMenuActive = !isMenuActive" [ngClass]="{'is-open': isMenuActive}" aria-label="menu">
+  		 <button id="burger" class="open-main-nav header-item" (click)="isMenuActive = !isMenuActive" [ngClass]="{'is-open': isMenuActive}" aria-label="menu">
 			<span class="burger"></span>
 		</button>
-  <ul fxHide.xs="true" class="navigation-right">
+  <ul class="navigation-right">
     <li>About me</li>
     <li routerLink="/signup">Sign Up</li>
     <li><a href="https://www.linkedin.com/in/dominik-pietrzyk-02966225a/">Contact</a></li>
