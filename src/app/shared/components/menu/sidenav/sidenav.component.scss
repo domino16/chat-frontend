@@ -21,9 +21,7 @@
 .main-nav::before {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
+inset: 0;
   right: -15px;
   background: $dark-color;
   transform-origin: 0 0;
@@ -45,6 +43,13 @@
   margin: 0.5rem 0;
   text-align: right;
   transform: skew(16deg);
+  padding: 12px 0;
+  color: $white;
+  font-size: 1.4em;
+  text-decoration: none;
+  font-weight: bold;
+  opacity: 1;
+
 }
 
 // /* Apparition effect on links */
@@ -54,13 +59,15 @@
 }
 
 .main-nav li:nth-child(1) a {
-  transition: all 275ms 175ms;
+  transition: all 275 175;
 }
+
 .main-nav li:nth-child(2) a {
-  transition: all 275ms 225ms;
+  transition: all 275 225;
 }
+
 .main-nav li:nth-child(3) a {
-  transition: all 275ms 275ms;
+  transition: all 275 275;
 }
 
 // /* Decoration */
@@ -68,13 +75,4 @@
 .main-nav li {
   list-style: none;
   padding: 0;
-}
-.main-nav a {
-  display: block;
-  padding: 12px 0;
-  color: $white;
-  font-size: 1.4em;
-  text-decoration: none;
-  font-weight: bold;
-  opacity: 1;
 }

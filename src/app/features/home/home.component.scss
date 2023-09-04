@@ -1,4 +1,5 @@
 @use "@angular/material" as mat;
+
 @import "src/styles/colors";
 @import "src/styles/variables";
 
@@ -56,13 +57,14 @@ justify-content: center;
   
   .under-logo-shadow {
     position: absolute;
-    width: 0px;
-    height: 0px;
-    filter: blur(0em);
+    width: 0;
+    height: 0;
     background-color: $primary-color;
     z-index: -1;
-    transition: 0.5s; filter: blur(1em);
+    transition: 0.5s;
+     filter: blur(1em);
   }
+
   & img:hover ~ .under-logo-shadow {
     width: 80px;
     height: 80px;
@@ -75,7 +77,7 @@ justify-content: center;
   align-items: center;
   margin-bottom: 15px;
   padding: 10px;
-  border-radius: 3px 3px 3px 3px;
+  border-radius: 3px;
   background-color: #f74646;
   text-align: left;
   font-size: 1.6rem;

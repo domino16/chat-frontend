@@ -12,6 +12,7 @@ import { rxStompServiceFactory } from "src/app/core/services/rx-stomp-factory.se
 import { ConversationInformationComponent } from "./conversation-information/conversation-information.component";
 import { ChatRoutingModule } from "./chat-routing.module";
 
+
 @NgModule({
   declarations: [ChatComponent, ChatListComponent, ChatMessengerComponent, ConversationInformationComponent],
   imports: [

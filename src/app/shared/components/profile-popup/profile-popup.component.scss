@@ -1,4 +1,5 @@
 @import "src/styles/colors";
+
 :host {
   display: flex;
   align-items: center;
@@ -19,7 +20,7 @@
   border-radius: 12px;
   padding: 0 20px;
   margin:0 5px;
-  box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+  box-shadow: 0 12px 28px 0 rgb(0 0 0 / 20%), 0 2px 4px 0 rgb(0 0 0 / 10%),
     inset 0 0 0 1px rgba($color: $dark-color-lighter, $alpha: 0.5);
 }
 
@@ -27,7 +28,7 @@
   align-self:center;
   width: 120px;
   height: 120px;
-  margin: 20px 0 15px 0;
+  margin: 20px 0 15px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -37,7 +38,7 @@
   align-items: center;
   margin-bottom: 10px;
   padding: 10px;
-  border-radius: 3px 3px 3px 3px;
+  border-radius: 3px;
   background-color: #f74646;
   text-align: left;
   font-size: 1.6rem;
@@ -58,11 +59,10 @@ ul {
 
 ul li {
   display: flex;
-
   position: relative;
   max-width: 100%;
   font-size: 1.6rem;
-  border-bottom: 1px solid rgba($color: $white, $alpha: 0.2);
+  border-bottom: 1px solid rgba($color: $white, $alpha: 20%);
   align-items: center;
   flex-wrap: wrap;
 
@@ -89,7 +89,7 @@ ul li {
     border-radius: 15px;
     font-size: 1.6rem;
     color: white;
-    margin: 3px 0px;
+    margin: 3px 0;
   }
 
 }
@@ -117,17 +117,17 @@ button{
   position: absolute;
   right: 0;
   cursor: pointer;
-  background-color: rgba($color: $gray-color, $alpha: 0.2);
+  background-color: rgba($color: $gray-color, $alpha: 20%);
   border-radius: 50%;
   margin: 8px;
   padding: 15px;
 }
 
 .close-icon:hover {
-  background-color: rgba($color: $gray-color, $alpha: 0.5);
+  background-color: rgba($color: $gray-color, $alpha: 50%);
 }
 
- @media(min-width: 394px){
+ @media(width > 394px){
   ul li {
 .new-password-input{
   margin-left: 100px;

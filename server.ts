@@ -5,12 +5,16 @@ import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
 import { existsSync } from 'fs';
 import { join } from 'path';
-
+import * as compression from 'compression';
+import * as cors from 'cors';
 import { AppServerModule } from './src/main.server';
+
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
+  server.use(compression());
+  server.use(cors());
   const distFolder = join(process.cwd(), 'dist/chat-frontend/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
@@ -42,7 +46,7 @@ export function app(): express.Express {
 
 
 function run(): void {
-  const port = process.env['PORT'] || 4000;
+  const port = process.env['PORT'] || 4200;
 
   // Start up the Node server
   const server = app();

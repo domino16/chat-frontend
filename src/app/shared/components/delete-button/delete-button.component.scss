@@ -2,17 +2,17 @@
     --background: none;
     --background-hover: #1E2235;
     --text: #fff;
-    --shadow: rgba(0, 9, 61, .2);
+    --shadow: rgb(0 9 61 / 20%);
     --paper: #5C86FF;
     --paper-lines: #fff;
     --trash: #E1E6F9;
     --trash-lines: #BBC1E1;
     --check: #fff;
     --check-background: #5C86FF;
+
     position: relative;
     border: none;
     outline: none;
-    background: none;
     padding: 10px;
     border-radius: 7px;
     -webkit-tap-highlight-color: transparent;
@@ -23,6 +23,7 @@
     box-shadow: 0 var(--shadow-y, 4px) var(--shadow-blur, 8px) var(--shadow);
     transform: scale(var(--scale, 1));
     transition: transform .3s, box-shadow .3s, background .3s;
+    
     span {
         display: block;
         font-size: 14px;
@@ -32,13 +33,15 @@
         transform: translateX(var(--span-x, 0)) translateZ(0);
         transition: transform .4s ease var(--span-delay, .2s), opacity .3s ease var(--span-delay, .2s);
     }
+
     .trash {
         display: block;
         position: relative;
         transform: translate(var(--trash-x, 0), var(--trash-y, 1px)) translateZ(0) scale(var(--trash-scale, .64));
         transition: transform .5s;
-        &:before,
-        &:after {
+
+        &::before,
+        &::after {
             content: '';
             position: absolute;
             height: 8px;
@@ -50,13 +53,17 @@
             transform: translate(var(--x, 3px), 2px) scaleY(var(--sy, .7)) rotate(var(--r, 0deg));
             transition: transform .4s, background .3s;
         }
-        &:before {
+
+        &::before {
             left: 1px;
         }
-        &:after {
+        
+        ::after {
             right: 1px;
+            
             --x: -3px;
         }
+        
         .top {
             position: absolute;
             overflow: hidden;
@@ -66,8 +73,9 @@
             height: 40px;
             z-index: 1;
             transform: translateY(2px);
-            &:before,
-            &:after {
+            
+            &::before,
+            &::after {
                 content: '';
                 position: absolute;
                 border-radius: 1px;
@@ -78,13 +86,16 @@
                 bottom: var(--b, 5px);
                 transition: background .3s, transform .4s;
             }
-            &:after {
+
+            &::after {
                 --w: 28px;
                 --h: 2px;
                 --l: 0;
                 --b: 0;
+                
                 transform: scaleX(var(--trash-line-scale, 1));
             }
+
             .paper {
                 width: 14px;
                 height: 18px;
@@ -95,8 +106,9 @@
                 position: absolute;
                 transform: translateY(-16px);
                 opacity: 0;
-                &:before,
-                &:after {
+
+                &::before,
+                &::after {
                     content: '';
                     width: var(--w, 10px);
                     height: 2px;
@@ -108,12 +120,14 @@
                     transform: scaleY(.7);
                     box-shadow: 0 9px 0 var(--paper-lines);
                 }
-                &:after {
+
+                &::after {
                     --t: 5px;
                     --w: 7px;
                 }
             }
         }
+
         .box {
             width: 20px;
             height: 25px;
@@ -123,8 +137,9 @@
             overflow: hidden;
             z-index: 2;
             transition: border-color .3s;
-            &:before,
-            &:after {
+
+            &::before,
+            &::after {
                 content: '';
                 position: absolute;
                 width: 4px;
@@ -133,7 +148,8 @@
                 left: var(--l, 50%);
                 background: var(--b, var(--trash-lines));
             }
-            &:before {
+            
+            &::before {
                 border-radius: 2px;
                 margin-left: -2px;
                 transform: translateX(-3px) scale(.6);
@@ -141,14 +157,17 @@
                 opacity: var(--trash-lines-opacity, 1);
                 transition: transform .4s, opacity .4s;
             }
-            &:after {
+
+            &::after {
                 --h: 16px;
                 --b: var(--paper);
                 --l: 1px;
+
                 transform: translate(-.5px, -16px) scaleX(.5);
                 box-shadow: 7px 0 0 var(--paper), 14px 0 0 var(--paper), 21px 0 0 var(--paper);
             }
         }
+
         .check {
             padding: 4px 3px;
             border-radius: 50%;
@@ -159,6 +178,7 @@
             opacity: var(--check-opacity, 0);
             transform: translateY(var(--check-y, 0)) scale(var(--check-scale, .2));
             transition: transform var(--check-duration, .2s) ease var(--check-delay, 0s), opacity var(--check-duration-opacity, .2s) ease var(--check-delay, 0s);
+            
             svg {
                 width: 8px;
                 height: 6px;
@@ -174,6 +194,7 @@
             }
         }
     }
+
     &.delete {
         --span-opacity: 0;
         --span-x: 16px;
@@ -192,36 +213,43 @@
         --checkmark-delay: 2.1s;
         --check-duration: .55s;
         --check-duration-opacity: .3s;
+
         .trash {
-            &:before,
-            &:after {
+            &::before,
+            &::after {
                 --sy: 1;
                 --x: 0;
             }
-            &:before {
+
+            &::before {
                 --r: 40deg;
             }
-            &:after {
+
+            &::after {
                 --r: -40deg;
             }
+
             .top {
                 .paper {
                     animation: paper 1.5s linear forwards .5s;
                 }
             }
+
             .box {
-                &:after {
+                &::after {
                     animation: cut 1.5s linear forwards .5s;
                 }
             }
         }
     }
+
     &.delete,
     &:hover {
         --btn: var(--background-hover);
         --shadow-y: 5px;
         --shadow-blur: 9px;
     }
+
     &:active {
         --shadow-y: 2px;
         --shadow-blur: 5px;
@@ -234,12 +262,15 @@
     100% {
         opacity: 1;
     }
+
     20% {
         transform: translateY(-16px);
     }
+
     40% {
         transform: translateY(0);
     }
+
     70%,
     100% {
         transform: translateY(24px);
@@ -251,6 +282,7 @@
     40% {
         transform: translate(-.5px, -16px) scaleX(.5);
     }
+
     100% {
         transform: translate(-.5px, 24px) scaleX(.5);
     }

@@ -74,6 +74,7 @@ ul li {
     color: $white;
   }
 }
+
 li::before {
   content: "";  
   position: absolute;
@@ -126,9 +127,11 @@ ul {
 	border: 0;
 	cursor: pointer;
 }
+
 .open-main-nav:focus {
 	outline: none;
 }
+
 .burger {
 	position: relative;
 	display: block;
@@ -140,8 +143,8 @@ ul {
 	transition: all .275s;
 }
 
-.burger:after,
-.burger:before {
+.burger::after,
+.burger::before {
 	content: '';
 	display: block;
 	height: 100%;
@@ -149,11 +152,11 @@ ul {
 	transition: all .275s;
 }
 
-.burger:after {
+.burger::after {
 	transform: translateY(-12px) translateX(-2px) skew(-20deg);
 }
 
-.burger:before {
+.burger::before {
 	transform: translateY(-16px) skew(-10deg);
 }
 
@@ -162,11 +165,11 @@ ul {
   	transform: skew(5deg) translateY(-8px) rotate(-45deg);
   }
   
-  .is-open .burger:before {
-  	transform: translateY(0px) skew(-10deg) rotate(75deg);
+  .is-open .burger::before {
+  	transform: translateY(0) skew(-10deg) rotate(75deg);
   }
   
-  .is-open .burger:after {
+  .is-open .burger::after {
   	transform: translateY(-12px) translateX(10px) skew(-20deg);
       opacity: 0;
   }
@@ -190,7 +193,7 @@ app-sidenav {
   height: 100vh;
 }
 
-@media(min-width:600px){
+@media(width > 600px){
   .navigation-right{
     display: block;
   }

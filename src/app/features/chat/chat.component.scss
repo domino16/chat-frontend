@@ -22,16 +22,17 @@ app-conversation-information {
 
 
 
-@media(min-width:400px) {
+@media(width > 400px) {
   app-chat-list {
     min-width:360px
   }
+
   app-conversation-information {
     min-width: 360px;
   }
 }
 
-@media (min-width: 960px) {
+@media (width > 960px) {
   app-chat-list {
     width: 360px;
   }
@@ -39,6 +40,7 @@ app-conversation-information {
   app-conversation-information {
     width: 360px;
   }
+  
   app-chat-messenger{
     width: 100%;
   }

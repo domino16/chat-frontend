@@ -40,9 +40,9 @@ p {
 .error-msg {
   display: flex;
   align-items: center;
-  margin: 5px 0 20px 0;
+  margin: 5px 0 20px;
   padding: 10px;
-  border-radius: 3px 3px 3px 3px;
+  border-radius: 3px;
   background-color: #f74646;
   text-align: left;
   font-size: 1.6rem;
@@ -98,7 +98,6 @@ $matWarnPallete: mat.define-palette(mat.$red-palette);
 }
 
 .checkbox-wrapper span {
-  
   font-size: 1.6rem;
  margin-left: 10px;
   color: white;
