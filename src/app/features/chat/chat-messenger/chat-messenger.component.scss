@@ -2,7 +2,6 @@
 
 :host {
   display: flex;
-  box-sizing: border-box;
   flex-direction: column;
   height: 100vh;
   width: 100%;
@@ -190,7 +189,7 @@
       color: white;
     }
 
-    .chat-messenger__sender mat-icon {
+     mat-icon {
       position: relative;
       display: flex;
       justify-content: center;

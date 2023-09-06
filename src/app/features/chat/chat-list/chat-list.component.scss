@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   padding: 15px 0 8px;
- height: 100px;
+  height: 100px;
 
   img {
     width: 70px;
@@ -20,7 +20,6 @@
     margin-left: 20px;
     border-radius: 50%;
     object-fit: cover;
-  
   }
 
   p {
@@ -28,7 +27,7 @@
     margin-left: 10px;
   }
 
-  mat-icon{
+  mat-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,6 +69,7 @@ mat-form-field {
   // styles for untouched input
   ::ng-deep .mdc-text-field .mdc-floating-label {
     color: $white !important;
+    margin: 0 auto;
   }
 
   ::ng-deep .mdc-notched-outline > * {
@@ -84,6 +84,11 @@ mat-form-field {
   ::ng-deep .mdc-text-field--focused .mdc-floating-label > * {
     color: $primary-color !important;
   }
+
+
+}
+::ng-deep .mat-mdc-option .mdc-list-item__primary-text{
+  margin: 0 auto !important;
 }
 //------------chat list styles----------------------------------------------------
 .chat-list-wrapper {
@@ -101,9 +106,9 @@ mat-form-field {
 
   &__left {
     display: flex;
-    flex:0 0 65px;
+    flex: 0 0 65px;
     justify-content: flex-end;
-  
+
     img {
       align-self: center;
       width: 50px;
@@ -144,7 +149,7 @@ mat-form-field {
   &__right {
     display: flex;
     flex-direction: column;
-    flex:0 0 62px;
+    flex: 0 0 62px;
     align-items: center;
     justify-content: center;
     font-size: 1.4rem;

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, HostListener, Output } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Store } from "@ngrx/store";
@@ -41,14 +41,17 @@ export class ChatListComponent {
 
   apiUrl = environment.apiUrlAuth
   
+  isSearchUserLoading = true
 
   // users displayed in search field
   filteredAllUsers$: Observable<User[]> = this.authUser$.pipe(switchMap((authUser: User) =>{
  return this.searchControl.valueChanges.pipe(
+  tap(()=> this.isSearchUserLoading = true),
     debounceTime(200),
     switchMap((value) => {
       return this.userService.searchUsersByLetter(value).pipe(
         map((users: User[]) => {
+          this.isSearchUserLoading = false
           return users.filter((user: User) => user.email !== authUser.email);
         }),
       );
@@ -90,6 +93,11 @@ export class ChatListComponent {
 
   onOpenPopup(){
     this.popupOpen.emit();
+  }
+
+  @HostListener('window:click', ['$event'])
+  onWindowClick() {
+this.isSearchUserLoading = true
   }
 
   logout(){

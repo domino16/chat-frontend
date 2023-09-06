@@ -1,5 +1,8 @@
 @import "src/styles/colors";
 
+:host {
+  display: flex;
+}
 
 .loader {
   width: 48px;
@@ -40,7 +43,7 @@
   0% {
     clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
   }
-  
+
   50% {
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
   }

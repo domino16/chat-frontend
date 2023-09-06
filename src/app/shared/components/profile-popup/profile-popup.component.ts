@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnDestroy, Output } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
+import { NgxImageCompressService } from "ngx-image-compress";
 import { Observable, switchMap } from "rxjs";
 import { User } from "src/app/core/interfaces/user";
 import { AuthService } from "src/app/core/services/auth.service";
@@ -29,13 +30,12 @@ export class ProfilePopupComponent implements OnDestroy {
   authUserSubscription = this.authUser$.subscribe((authUser) => {
     if (authUser) this.authUser = authUser;
   });
-  selectedFiles?: FileList;
-  currentFile?: File;
+  fileResultAfterCompression?: File;
+  imgResultAfterCompression = "";
   progress = 0;
   errorMessage = "";
   isEditMode = false;
   isChanged = false;
-  fileInfos?: Observable<unknown>;
 
   editForm: FormGroup = new FormGroup({
     firstName: new FormControl(this.authUser?.firstName, [Validators.required]),
@@ -49,12 +49,12 @@ export class ProfilePopupComponent implements OnDestroy {
     private userService: UserService,
     private authService: AuthService,
     private store: Store,
+    private imageCompress: NgxImageCompressService,
   ) {}
 
   ngOnDestroy(): void {
     this.authUserSubscription.unsubscribe();
   }
-  
 
   editProfile() {
     const firstName = this.editForm.controls["firstName"].value;
@@ -62,7 +62,6 @@ export class ProfilePopupComponent implements OnDestroy {
     const oldPassword = this.editForm.controls["oldPassword"].value;
     const newPassword = this.editForm.controls["newPassword"].value;
 
-    const file: File | null = this.selectedFiles?.item(0) as File;
     const currentUserId = this.authUser?.email as string;
     const request: editRequest = {
       currentUserId,
@@ -72,9 +71,9 @@ export class ProfilePopupComponent implements OnDestroy {
       newPassword,
     };
 
-    if (file) {
+    if (this.fileResultAfterCompression) {
       this.uploadService
-        .upload(file, currentUserId)
+        .upload(this.fileResultAfterCompression, currentUserId)
         ?.pipe(switchMap(() => this.userService.editProfile(request)))
         .subscribe((token) => {
           this.authService.handleAuth(token.token), this.closeEditMode();
@@ -86,22 +85,32 @@ export class ProfilePopupComponent implements OnDestroy {
       next: (token) => {
         this.authService.handleAuth(token.token), this.closeEditMode();
       },
-      error: (err) => this.errorMessage = err.error.text
+      error: (err) => (this.errorMessage = err.error.text),
     });
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  selectFile(event: any): void {
-    this.isChanged = true;
-    this.selectedFiles = event.target.files;
   }
 
   onClose() {
     this.popupClose.emit();
+    this.imgResultAfterCompression = "";
   }
 
-  closeEditMode(){
-    this.errorMessage = ""
-    this.isEditMode = !this.isEditMode
+  closeEditMode() {
+    this.errorMessage = "";
+    this.isEditMode = !this.isEditMode;
+    this.imgResultAfterCompression = "";
+  }
+
+  compressFile() {
+    this.isChanged = true;
+    this.imageCompress.uploadFile().then(({ image, orientation }) => {
+      this.imageCompress.compressFile(image, orientation, 50, 50, 200).then((compressedImage) => {
+        this.imgResultAfterCompression = compressedImage;
+        fetch(compressedImage)
+          .then((res) => res.blob())
+          .then((blob) => {
+            this.fileResultAfterCompression = new File([blob], "File name", { type: "image/png" });
+          });
+      });
+    });
   }
 }
