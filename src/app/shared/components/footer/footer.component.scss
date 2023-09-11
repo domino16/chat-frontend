@@ -21,6 +21,11 @@
   justify-content: flex-end;
   align-items: center;
   gap: 30px;
+
+  a{
+    color: $white;
+    text-decoration: none;
+  }
 }
 
 fa-icon {
