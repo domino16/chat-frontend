@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrlAuth: "https://chat-auth-backend-xvmaiuixca-lm.a.run.app",
-  apiUrlChat: "https://chat-message-backend-xvmaiuixca-lm.a.run.app",
-  wsApiUrl: "wss://chat-message-backend-xvmaiuixca-lm.a.run.app/ws",
+  apiUrlAuth: "http://chat-auth-backend-dev.eu-central-1.elasticbeanstalk.com",
+  apiUrlChat: "http://chat-message-backend-dev.eu-central-1.elasticbeanstalk.com",
+  wsApiUrl: "ws://chat-message-backend-dev.eu-central-1.elasticbeanstalk.com/ws",
 };

@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnDestroy, Output } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { NgxImageCompressService } from "ngx-image-compress";
-import { Observable, switchMap } from "rxjs";
+import { switchMap } from "rxjs";
 import { User } from "src/app/core/interfaces/user";
 import { AuthService } from "src/app/core/services/auth.service";
 import { FileUploadService } from "src/app/core/services/file-upload.service";

@@ -5,14 +5,12 @@
   <p>{{ (authUser$ | async)?.firstName }} {{ (authUser$ | async)?.lastName }}</p>
 </div>
 <div class="chat-list-wrapper" (click)="sendFrameToRecipientUser()" (scroll)="onScroll($event)">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" (click)="searchControl.setValue('');">
     <mat-label>
       Search friends
       <fa-icon [icon]="faSearch"></fa-icon>
     </mat-label>
     <input
-  
-      (click)="searchControl.setValue('');"
       type="text"
       aria-label="Number"
       matInput
@@ -22,10 +20,9 @@
     <mat-autocomplete #auto="matAutocomplete">
       <ng-container *ngFor="let user of filteredAllUsers$ | async">
         <mat-option
+        *ngIf="!isSearchUserLoading"
           (click)="onUserSelect(user.email, user.firstName)"
-          [value]="user.email"
-          *ngIf="!isSearchUserLoading"
-        >
+          [value]="user.email">
           {{ user.firstName }} {{ user.lastName }}
         </mat-option>
       </ng-container>

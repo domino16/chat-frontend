@@ -53,6 +53,7 @@
     <!-- #################### send section #########################################-->
     <div class="chat-messenger__sender">
         <input
+        id="my-input"
           type="text"
           (keydown.enter)="onSendMessage()"
           [formControl]="sendMessageControl"

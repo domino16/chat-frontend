@@ -59,11 +59,6 @@ export class ChatListComponent {
   );
 }))
   
-  
- 
-
-
-
   constructor(private userService: UserService, private chatService: ChatService, private store: Store, private authService:AuthService) {}
 
   onChatSelectChange(chat: Chat) {

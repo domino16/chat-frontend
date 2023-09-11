@@ -26,8 +26,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   loginForm: FormGroup = new FormGroup({
-    emailFormControl: new FormControl("", [Validators.required, Validators.email]),
-    passwordFormControl: new FormControl("", [Validators.required]),
+    emailFormControl: new FormControl("test@test.com", [Validators.required, Validators.email]),
+    passwordFormControl: new FormControl("test123", [Validators.required]),
   });
 
 
@@ -41,4 +41,5 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.store.dispatch(loginFailure({error:""}))
   }
+
 }
