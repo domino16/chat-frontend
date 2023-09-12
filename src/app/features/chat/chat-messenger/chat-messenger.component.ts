@@ -19,7 +19,7 @@ import { environment } from "src/environments/environment";
   templateUrl: "./chat-messenger.component.html",
   styleUrls: ["./chat-messenger.component.scss"],
 })
-export class ChatMessengerComponent implements AfterViewChecked {
+export class ChatMessengerComponent {
   sendMessageControl = new FormControl("");
   selectedChat$: Observable<Chat | null> = this.store.select(getSelectedChat);
   messages$: Observable<Message[]> = this.store.select(selectAllMessages);
@@ -31,14 +31,6 @@ export class ChatMessengerComponent implements AfterViewChecked {
   @Output() toggle = new EventEmitter();
 
   constructor(private store: Store, private chatService: ChatService) {}
-
-  //keybord opener on mobile devices
-  ngAfterViewChecked() {
-    if (window.innerWidth < 600) {
-      const input = document.querySelector<HTMLInputElement>("#my-input");
-      input?.focus();
-    }
-  }
 
   // load more messages when user scroll messages box in 95%
   onScroll(e: Event) {
