@@ -25,7 +25,7 @@
           [value]="user.email">
           {{ user.firstName }} {{ user.lastName }}
         </mat-option>
-        <mat-option *ngIf="isSearchUserLoading && !!user">User not found</mat-option>
+        <mat-option *ngIf="isSearchUserLoading && !user">User not found</mat-option>
       </ng-container>
       <mat-option *ngIf="isSearchUserLoading"><app-loading-spinner></app-loading-spinner></mat-option>
     </mat-autocomplete>
