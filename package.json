@@ -16,7 +16,7 @@
     "dev:ssr": "ng run chat-frontend:serve-ssr",
     "serve:ssr": "node dist/chat-frontend/server/main.js",
     "build:ssr": "ng build --configuration production && ng run chat-frontend:server",
-     "heroku-postbuild": "ng build --configuration production && ng run chat-frontend:server",
+    "heroku-postbuild": "ng build --configuration production && ng run chat-frontend:server",
     "prerender": "ng run chat-frontend:prerender"
   },
   "private": true,
